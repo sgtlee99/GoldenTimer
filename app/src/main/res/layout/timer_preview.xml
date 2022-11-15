@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical">
+
+	<com.google.android.material.card.MaterialCardView
+			android:layout_width="match_parent"
+			android:layout_height="80dp"
+			android:layout_margin="15dp"
+			app:strokeWidth="3dp"
+			app:strokeColor="#f00"
+			app:cardCornerRadius="10dp"
+			>
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="horizontal">
+		<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="title"
+				android:id="@+id/title"/>
+
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:text="menu"
+				android:id="@+id/menu"/>
+		</LinearLayout>
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:src="@drawable/ic_launcher_background"
+					android:layout_weight="1"
+					android:id="@+id/menu_img"
+					/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="04:30"
+					android:textSize="45dp"
+					android:layout_weight="1"
+					android:id="@+id/time_view"/>
+		</LinearLayout>
+	</com.google.android.material.card.MaterialCardView>
+</LinearLayout>
