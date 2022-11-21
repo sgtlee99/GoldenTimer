@@ -2,14 +2,13 @@ package com.example.goldentimer.adapter
 
 import coil.api.load
 import com.example.goldentimer.R
-import com.example.goldentimer.model.TimerModel
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.timer_preview.view.*
+import kotlinx.android.synthetic.main.timer_items.view.*
 
-class timer_adapter(val title : String, val menu : String ,val img : Int, val time : Int) : Item<GroupieViewHolder>() {
+class Timer_Adapter(val title : String, val menu : String, val img : Int, val time : Int) : Item<GroupieViewHolder>() {
     override fun getLayout(): Int {
-        return R.layout.timer_preview
+        return R.layout.timer_items
     }
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         viewHolder.itemView.title.text = title

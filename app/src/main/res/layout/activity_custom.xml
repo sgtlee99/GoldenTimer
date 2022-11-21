@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".CustomActivity">
+		tools:context=".CustomActivity"
+		android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+	<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="제목"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="15dp"/>
+
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="알람 이름"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginBottom="15dp"
+			/>
+
+	<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="메뉴"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="15dp"/>
+
+	<!--	이미지버튼으로 교체예정-->
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>
+
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:ignore="MissingConstraints"
+				android:layout_weight="1"
+				android:backgroundTint="@color/bright_red"
+				android:layout_margin="5dp"
+				android:text="면"
+				/>
+
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:ignore="MissingConstraints"
+				android:layout_weight="1"
+				android:backgroundTint="@color/orange"
+				android:layout_margin="5dp"
+				android:text="볶기"
+
+				/>
+
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:ignore="MissingConstraints"
+				android:layout_weight="1"
+				android:backgroundTint="@color/bright_blue"
+				android:layout_margin="5dp"
+				android:text="굽기"
+
+				/>
+
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				tools:ignore="MissingConstraints"
+				android:layout_weight="1"
+				android:backgroundTint="@color/bright_green"
+				android:layout_margin="5dp"
+				android:text="삶기"
+				/>
+	</LinearLayout>
+	<!--	메뉴선택-->
+	<androidx.recyclerview.widget.RecyclerView
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			android:orientation="horizontal"
+			android:id="@+id/recyclerview_menu"
+			/>
+
+
+</LinearLayout>

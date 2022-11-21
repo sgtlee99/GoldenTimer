@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  xmlns:app="http://schemas.android.com/apk/res-auto"
+			  android:orientation="horizontal"
+		android:layout_marginRight="10dp"
+		android:layout_marginLeft="10dp">
+
+	<TextView
+			android:layout_width="80dp"
+			android:layout_height="50dp"
+			android:background="@drawable/menu_list_draw"
+			android:gravity="center"
+			android:text="TAG"
+			android:textStyle="bold"
+			android:textSize="25dp"
+			android:textColor="@color/white"
+			android:id="@+id/info_menu"
+			/>
+
+</LinearLayout>

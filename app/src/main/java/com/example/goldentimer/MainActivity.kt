@@ -1,9 +1,9 @@
 package com.example.goldentimer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.goldentimer.adapter.timer_adapter
-import com.example.goldentimer.model.TimerModel
+import com.example.goldentimer.adapter.Timer_Adapter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = GroupAdapter<GroupieViewHolder>()
 
         //어댑터에 데이터 추가    ==> TimerModel( title , menu, image, time)
-        adapter.add(timer_adapter("황금비율", "신라면", R.drawable.ramen,300))
-        adapter.add(timer_adapter("황금비율", "신라면", R.drawable.ramen,300))
+        adapter.add(Timer_Adapter("황금비율", "신라면", R.drawable.ramen,300))
+        adapter.add(Timer_Adapter("황금비율", "신라면", R.drawable.ramen,300))
 
 
 
@@ -25,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         recyclerview_timer.adapter = adapter
 
         add_button.setOnClickListener {
-            //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함
-
+            //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
+            var intent = Intent(this, CustomActivity::class.java)
+            startActivity(intent)
             //추후 삭제 예정
-            adapter.add(timer_adapter("황금비율", "신라면", R.drawable.ramen,300))
+            adapter.add(Timer_Adapter("황금비율", "신라면", R.drawable.ramen,300))
         }
     }
 }
