@@ -14,7 +14,8 @@
 			android:text="제목"
 			android:layout_marginLeft="15dp"
 			android:layout_marginRight="15dp"
-			android:layout_marginTop="15dp"/>
+			android:layout_marginTop="15dp"
+			android:id="@+id/timer_title"/>
 
 	<EditText
 			android:layout_width="match_parent"
@@ -92,8 +93,76 @@
 			android:orientation="horizontal"
 			android:id="@+id/recyclerview_menu"
 			/>
-	<ImageView
+
+	<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:id="@+id/menu_preview_img"/>
+			android:orientation="horizontal"
+			android:padding="15dp"
+			>
+
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text=" "
+				android:layout_weight="1"/>
+
+		<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="125dp"
+				android:src="@drawable/default_image"
+				android:layout_weight="1"
+				android:id="@+id/menu_preview_img"/>
+
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text=" "
+				android:layout_weight="1"/>
+	</LinearLayout>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:textSize="24sp"
+			android:text="메뉴"
+			/>
+
+	<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="시간 설정"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginBottom="15dp"
+			/>
+
+
+
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		<Button
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="뒤로"
+				android:layout_weight="1"
+				android:layout_margin="10dp"
+				android:id="@+id/back_button"
+				/>
+
+		<Button
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="추가"
+				android:layout_weight="1"
+				android:layout_margin="10dp"
+				android:id="@+id/timer_save_button"/>
+	</LinearLayout>
+	<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/test_button"/>
 </LinearLayout>
