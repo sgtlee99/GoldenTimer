@@ -48,6 +48,7 @@
 				android:backgroundTint="@color/bright_red"
 				android:layout_margin="5dp"
 				android:text="면"
+				android:id="@+id/noodle"
 				/>
 
 		<Button
@@ -55,10 +56,10 @@
 				android:layout_height="wrap_content"
 				tools:ignore="MissingConstraints"
 				android:layout_weight="1"
-				android:backgroundTint="@color/orange"
+				android:backgroundTint="@color/bright_red"
 				android:layout_margin="5dp"
 				android:text="볶기"
-
+				android:id="@+id/fry"
 				/>
 
 		<Button
@@ -66,10 +67,10 @@
 				android:layout_height="wrap_content"
 				tools:ignore="MissingConstraints"
 				android:layout_weight="1"
-				android:backgroundTint="@color/bright_blue"
+				android:backgroundTint="@color/bright_red"
 				android:layout_margin="5dp"
 				android:text="굽기"
-
+				android:id="@+id/bake"
 				/>
 
 		<Button
@@ -77,9 +78,10 @@
 				android:layout_height="wrap_content"
 				tools:ignore="MissingConstraints"
 				android:layout_weight="1"
-				android:backgroundTint="@color/bright_green"
+				android:backgroundTint="@color/bright_red"
 				android:layout_margin="5dp"
 				android:text="삶기"
+				android:id="@+id/boil"
 				/>
 	</LinearLayout>
 	<!--	메뉴선택-->
@@ -90,6 +92,8 @@
 			android:orientation="horizontal"
 			android:id="@+id/recyclerview_menu"
 			/>
-
-
+	<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/menu_preview_img"/>
 </LinearLayout>
