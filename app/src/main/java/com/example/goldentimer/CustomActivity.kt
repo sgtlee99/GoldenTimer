@@ -30,19 +30,17 @@ import kotlin.concurrent.timer
 
 class CustomActivity : AppCompatActivity(), View.OnClickListener {
     val TAG: String = "[GT]CUSTOMACTIVITY"
-    val DEFAULT_SELECT: Int = 1
     val adapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom)
 
-        //제목, 메뉴, 시간
+        //제목, 메뉴, 이미지, 시간
         //이미지는 기본 에셋제공하여 선택하는 구조
         //버튼 하나를 선택했을때 다른버튼들의 채도가 낮아지며
         //아래의 메뉴 리스트의 아이템들이 변경된다
-        //====================================================
-        var alarm_title: String = timer_title.text.toString()               //알람제목
+        //설정이 완료되면 내부 DB에 저장된다
 
         noodle.setOnClickListener(this)
         fry.setOnClickListener(this)
@@ -64,8 +62,6 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
                 else -> menu_preview_img.setImageResource(R.drawable.default_image)
             }
         }
-        var selectMin : Int = 0
-        var selectSec : Int = 0
         test_button.setOnClickListener {
             callNumberPickerDialog()
             Log.d(TAG, "dialog 실행")
@@ -158,7 +154,6 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
     fun ReConfirmDialog() {     //설정한 데이터가 맞는지 재확인하는 dialog
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("입력하신 정보가 맞나요?")
-        dialog.setMessage("")
         dialog.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
             //mainactivity로 이동
             val intent = Intent(this, MainActivity::class.java)

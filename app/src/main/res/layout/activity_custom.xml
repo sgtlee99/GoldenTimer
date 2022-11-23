@@ -24,6 +24,7 @@
 			android:layout_marginLeft="15dp"
 			android:layout_marginRight="15dp"
 			android:layout_marginBottom="15dp"
+			android:id="@+id/alarm_title"
 			/>
 
 	<TextView
@@ -137,6 +138,18 @@
 			android:layout_marginRight="15dp"
 			android:layout_marginBottom="15dp"
 			/>
+	<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:id="@+id/test_button"/>
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/tv1"
+			android:text="test"
+			android:layout_gravity="center"
+			/>
 
 
 
@@ -161,14 +174,5 @@
 				android:layout_margin="10dp"
 				android:id="@+id/timer_save_button"/>
 	</LinearLayout>
-	<Button
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/test_button"/>
-	<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/tv1"
-			android:text="test"
-			/>
+
 </LinearLayout>

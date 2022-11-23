@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //내부DB에 있는 데이터들을 불러와 어댑터에 추가해야 한다
+
         //어뎁터 선언 - groupie
         val adapter = GroupAdapter<GroupieViewHolder>()
 
