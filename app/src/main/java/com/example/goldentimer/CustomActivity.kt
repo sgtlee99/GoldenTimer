@@ -1,12 +1,18 @@
 package com.example.goldentimer
 
 import android.annotation.SuppressLint
+import android.app.TimePickerDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +21,15 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.numberpicker_themes.*
+import java.util.*
+//
 import kotlin.concurrent.timer
 
 
+
 class CustomActivity : AppCompatActivity(), View.OnClickListener {
-    val TAG: String = "[GT]<CustomActivity>"
+    val TAG: String = "[GT]CUSTOMACTIVITY"
     val DEFAULT_SELECT: Int = 1
     val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -32,7 +42,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         //버튼 하나를 선택했을때 다른버튼들의 채도가 낮아지며
         //아래의 메뉴 리스트의 아이템들이 변경된다
         //====================================================
-        var alarm_title : String = timer_title.text.toString()               //알람제목
+        var alarm_title: String = timer_title.text.toString()               //알람제목
 
         noodle.setOnClickListener(this)
         fry.setOnClickListener(this)
@@ -42,10 +52,10 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         recyclerview_menu.adapter = adapter
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->
-            var selected : String = ""
+            var selected: String = ""
             selected = (item as Menu_Adapter).menu                            //선택한 미리보기 이미지
             Log.d(TAG, selected)     //선택한 메뉴가 뭔지 보여주는 LOG
-            //이미지 리소스 하드 코딩
+            //이미지 리소스 하드 코딩 -> ENUM type으로 변경해보자
             when (selected) {
                 "라면" -> menu_preview_img.setImageResource(R.drawable.ramen)
                 "소면" -> menu_preview_img.setImageResource(R.drawable.soba)
@@ -54,27 +64,15 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
                 else -> menu_preview_img.setImageResource(R.drawable.default_image)
             }
         }
+        var selectMin : Int = 0
+        var selectSec : Int = 0
         test_button.setOnClickListener {
-
+            callNumberPickerDialog()
+            Log.d(TAG, "dialog 실행")
         }
-        //시간을 선택하는 NumberPicker
-//        timer_number_picker_min.maxValue = 60
-//        timer_number_picker_min.minValue = 0
-
-//        val timer_picker_min_text = timer_number_picker_min
-//        val timer_picker_min = timer_number_picker_min.apply {
-//            maxValue = 60
-//            minValue = 0
-//            wrapSelectorWheel = false
-//            setOnValueChangedListener {
-//                    numberPicker, i, i2 ->
-//
-//            }
-//        }
-//        timer_number_picker_sec.maxValue = 59
-//        timer_number_picker_sec.minValue = 0
 
         timer_save_button.setOnClickListener {
+            //설정내용 재확인
             ReConfirmDialog()
         }
     }
@@ -113,38 +111,48 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    @SuppressLint("ResourceAsColor")
-    fun Noodle_slected() {
-        noodle.setBackgroundColor(R.color.bright_red)
-        fry.setBackgroundColor(R.color.dark_red)
-        bake.setBackgroundColor(R.color.dark_red)
-        boil.setBackgroundColor(R.color.dark_red)
-    }
+    //분, 초를 선택하는 numberPicker
+    fun callNumberPickerDialog() {
+        val dialog = AlertDialog.Builder(this).create()
 
-    @SuppressLint("ResourceAsColor")
-    fun Fry_slected() {
-        noodle.setBackgroundColor(R.color.dark_red)
-        fry.setBackgroundColor(R.color.bright_red)
-        bake.setBackgroundColor(R.color.dark_red)
-        boil.setBackgroundColor(R.color.dark_red)
-    }
+        val edialog: LayoutInflater = LayoutInflater.from(this)
+        val mView: View = edialog.inflate(R.layout.numberpicker_themes, null)
 
-    @SuppressLint("ResourceAsColor")
-    fun Bake_slected() {
-        noodle.setBackgroundColor(R.color.dark_red)
-        fry.setBackgroundColor(R.color.dark_red)
-        bake.setBackgroundColor(R.color.bright_red)
-        boil.setBackgroundColor(R.color.dark_red)
-    }
+        val minute: NumberPicker = mView.findViewById(R.id.numberPicker_min)
+        val second: NumberPicker = mView.findViewById(R.id.numberPicker_sec)
 
-    @SuppressLint("ResourceAsColor")
-    fun Boil_slected() {
-        noodle.setBackgroundColor(R.color.dark_red)
-        fry.setBackgroundColor(R.color.dark_red)
-        bake.setBackgroundColor(R.color.dark_red)
-        boil.setBackgroundColor(R.color.bright_red)
-    }
+        val cancel: Button = mView.findViewById<Button>(R.id.btn_settime_no)
+        val start: Button = mView.findViewById<Button>(R.id.btn_settime_ok)
+        // editText 설정해제
+        minute.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+        second.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+        //최소값 설정
+        minute.minValue = 0
+        second.minValue = 0
 
+        //최대값 설정
+        minute.maxValue = 30
+        second.maxValue = 59
+        //기본값 설정
+        minute.value = 1
+        second.value = 0
+
+        //취소버튼
+        cancel.setOnClickListener {
+            dialog.dismiss()
+            dialog.cancel()
+        }
+        start.setOnClickListener {
+            Toast.makeText(this, "${minute.value}분 ${second.value}초", Toast.LENGTH_SHORT).show()
+            tv1.text = "${minute.value}분 ${second.value}초"
+            dialog.dismiss()
+        }
+
+        dialog.setView(mView)
+        dialog.create()
+        dialog.show()
+        dialog.window!!.setLayout(750,WindowManager.LayoutParams.WRAP_CONTENT)
+    }
 
 
     fun ReConfirmDialog() {     //설정한 데이터가 맞는지 재확인하는 dialog
