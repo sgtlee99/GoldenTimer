@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goldentimer.adapter.TimerModel
 import com.example.goldentimer.adapter.Timer_Adapter
+import com.example.goldentimer.database.AppDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var main_recyclerView : RecyclerView
     lateinit var main_adapter : Timer_Adapter
 
+//    var db : AppDatabase? = null
+
     lateinit var itemList : ArrayList<TimerModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +29,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //내부DB에 있는 데이터들을 불러와 어댑터에 추가해야 한다
 
+        //초기화
+//        db = AppDatabase.getInstance(this)
+//        //이전에 저장한 내용 모두 불러와서 추가
+//        val savedTimers = db!!.timersDao().getAll()
+//        if (savedTimers.isNotEmpty()) {
+//            itemList.addAll(savedTimers)
+//        }
         add_button.setOnClickListener {
             //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
             var intent = Intent(this, CustomActivity::class.java)
