@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.goldentimer.adapter.TimerModel
 import com.example.goldentimer.adapter.Timer_Adapter
 import com.example.goldentimer.database.AppDatabase
+import com.example.goldentimer.database.Timers
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 //    var db : AppDatabase? = null
 
-    lateinit var itemList : ArrayList<TimerModel>
+    lateinit var itemList : ArrayList<Timers>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,13 +64,13 @@ class MainActivity : AppCompatActivity() {
         return bitmap
     }
 
-    private fun tempTimer(): ArrayList<TimerModel> {
-        var tempTimers = ArrayList<TimerModel>()
+    private fun tempTimer(): ArrayList<Timers> {
+        var tempTimers = ArrayList<Timers>()
 
 
-        tempTimers.add(TimerModel("황금비율", "신라면", loadBitmap(R.drawable.ramen),30,0))
-        tempTimers.add(TimerModel("황금비율", "신라면", loadBitmap(R.drawable.ramen),34,0))
-        tempTimers.add(TimerModel("황금비율", "신라면", loadBitmap(R.drawable.ramen),5,0))
+        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen),30,0))
+        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen),34,0))
+        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen),5,0))
         return tempTimers
 
     }

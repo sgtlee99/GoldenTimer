@@ -29,6 +29,7 @@ import kotlin.concurrent.timer
 
 
 class CustomActivity : AppCompatActivity(), View.OnClickListener {
+
     val TAG: String = "TAG_Custom_Activity"
     val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -69,7 +70,8 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
 
         timer_save_button.setOnClickListener {
             //설정내용 재확인
-            ReConfirmDialog()
+//            ReConfirmDialog()
+
         }
     }
 
@@ -155,6 +157,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("입력하신 정보가 맞나요?")
         dialog.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
+
             //mainactivity로 이동
             val intent = Intent(this, MainActivity::class.java)
             //전 액티비티 지워줌

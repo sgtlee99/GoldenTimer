@@ -1,14 +1,16 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-// room db kapt
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//// room db kapt
+//apply plugin: 'kotlin-kapt'
 
-//plugins {
-//    id 'com.android.application'
-//    id 'kotlin-android'
-//    id 'kotlin-android-extensions'
-//}
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    //room db kapt
+    id 'kotlin-kapt'
+ }
 
 android {
     compileSdk 32
@@ -73,3 +75,4 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
 }
+//tasks.register("prepareKotlinBuildScriptModel"){}

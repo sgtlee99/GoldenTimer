@@ -7,12 +7,12 @@ import androidx.room.PrimaryKey
 //알람이름, 메뉴제목, 이미지, 분, 초
 @Entity(tableName = "tb_timers")
 data class Timers(
-    val t_title : String = "title",
-    val t_menu : String = "menu",
-    val t_img : Bitmap? = null,
-    val t_min : Int = 0,
-    val t_sec : Int = 0
+    var t_title : String,
+    var t_menu : String,
+    var t_img : Bitmap? = null,
+    var t_min : Int,
+    var t_sec : Int
 ) {
     @PrimaryKey(autoGenerate = true)
-    val id : Int? = null
+    var id : Int? = null
 }

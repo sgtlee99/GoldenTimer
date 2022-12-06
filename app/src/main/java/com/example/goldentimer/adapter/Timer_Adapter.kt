@@ -9,11 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.example.goldentimer.R
+import com.example.goldentimer.database.Timers
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.timer_items.view.*
 
-class Timer_Adapter(val itemList: ArrayList<TimerModel>) : RecyclerView.Adapter<Timer_Adapter.ViewHolder>() {
+class Timer_Adapter(val itemList: List<Timers>) : RecyclerView.Adapter<Timer_Adapter.ViewHolder>() {
 
     // 아이템 레이아웃과 결합
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Timer_Adapter.ViewHolder {
@@ -30,11 +31,11 @@ class Timer_Adapter(val itemList: ArrayList<TimerModel>) : RecyclerView.Adapter<
 //    }
 //     View에 내용 입력
     override fun onBindViewHolder(holder: Timer_Adapter.ViewHolder, position: Int) {
-        holder.tm_title.text = itemList[position].m_title
-        holder.tm_menu.text = itemList[position].m_menu
-        holder.tm_image.setImageBitmap(itemList[position].m_image)
-        holder.tm_min.text = itemList[position].m_min.toString()
-        holder.tm_sec.text = itemList[position].m_sec.toString()
+        holder.tm_title.text = itemList[position].t_title
+        holder.tm_menu.text = itemList[position].t_menu
+        holder.tm_image.setImageBitmap(itemList[position].t_img)
+        holder.tm_min.text = itemList[position].t_min.toString()
+        holder.tm_sec.text = itemList[position].t_sec.toString()
 
         // 리스트 내 항목 클릭 시 onClick() 호출
         holder.itemView.setOnClickListener {
