@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    val TAG = "TAG_Main_Activity"
     lateinit var main_recyclerView : RecyclerView
     lateinit var main_adapter : Timer_Adapter
 

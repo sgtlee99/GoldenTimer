@@ -29,7 +29,7 @@ import kotlin.concurrent.timer
 
 
 class CustomActivity : AppCompatActivity(), View.OnClickListener {
-    val TAG: String = "[GT]CUSTOMACTIVITY"
+    val TAG: String = "TAG_Custom_Activity"
     val adapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
