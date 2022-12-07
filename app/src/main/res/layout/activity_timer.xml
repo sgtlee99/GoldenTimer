@@ -8,11 +8,27 @@
     tools:context=".TimerActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="그래서 이제 뭐함?"
+        android:text="제목"
         android:textSize="45sp"
-        android:id="@+id/db_test_text"/>
+        android:layout_gravity="center"
+        android:id="@+id/timer_get_title"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메뉴"
+        android:textSize="45sp"
+        android:layout_gravity="center"
+        android:id="@+id/timer_get_menu"/>
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/default_image"
+        android:layout_gravity="center"
+        android:id="@+id/timer_get_menuimage"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"

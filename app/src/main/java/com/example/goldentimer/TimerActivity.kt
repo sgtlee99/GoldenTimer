@@ -35,7 +35,6 @@ class TimerActivity : AppCompatActivity() {
         var received_id : Int = 0
         if (intent.hasExtra("timer-id")) {
             received_id = intent.getIntExtra("timer-id", 404)
-            db_test_text.text = received_id.toString()
         } else {
             Toast.makeText(this, "있었는데요, 없었습니다", Toast.LENGTH_SHORT).show()
         }
@@ -51,11 +50,15 @@ class TimerActivity : AppCompatActivity() {
 //        timer_reset.setOnClickListener { resetTimer() }
 
 //        convertTime(set_timer.t_min, set_timer.t_sec)
-        //타이머 코드
 
+        //제목, 메뉴, 이미지 받기
+        timer_get_title.text = set_timer.t_title
+        timer_get_menu.text = set_timer.t_menu
+        timer_get_menuimage.setImageBitmap(set_timer.t_img)
+
+        //타이머 코드
         timer_start.setOnClickListener { startCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
         timer_pause.setOnClickListener { stopCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
-//        timer_reset.setOnClickListener { resetTimer() }
 
 
 
