@@ -46,19 +46,20 @@ class TimerActivity : AppCompatActivity() {
         Log.d(TAG, "${set_timer.t_title} ${set_timer.t_menu} ${set_timer.t_img} ${set_timer.t_min} ${set_timer.t_sec}")
 
         //타이머 시작, 정지, 리셋 버튼
-        timer_start.setOnClickListener { startTimer() }
-        timer_pause.setOnClickListener { pauseTimer() }
-        timer_reset.setOnClickListener { resetTimer() }
+//        timer_start.setOnClickListener { startTimer() }
+//        timer_pause.setOnClickListener { pauseTimer() }
+//        timer_reset.setOnClickListener { resetTimer() }
 
 //        convertTime(set_timer.t_min, set_timer.t_sec)
         //타이머 코드
 
+        timer_start.setOnClickListener { startCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
+        timer_pause.setOnClickListener { stopCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
+//        timer_reset.setOnClickListener { resetTimer() }
 
 
 
     }
-    //바인드 뷰
-
 
     private fun convertTime(min : String, sec : String) : Long {
         //String으로 들어온 시간 형변환
@@ -104,16 +105,21 @@ class TimerActivity : AppCompatActivity() {
 
         // 분만 보여줌, 초만 보여줌
         timer_count_min.text = "%02d:".format(remainSeconds/60)
-        timer_count_min.text= "%02d".format(remainSeconds%60)
+        timer_count_sec.text= "%02d".format(remainSeconds%60)
 
     }
 
     //카운트 다운 멈춤
-    private fun stopCountDown() {
-//        currentCountDownTimer = createCountDownTimer(/*밀리초 넣기*/)
+    private fun stopCountDown(millitime : Long) {
+        currentCountDownTimer = createCountDownTimer(millitime)
+        currentCountDownTimer = null
     }
     //카운트 다운 시작
-    private fun startCountDown() {
+    private fun startCountDown(millitime : Long) {
+        currentCountDownTimer = createCountDownTimer(millitime)
+        currentCountDownTimer?.start()
+
+        //사운드
 
     }
     //===============================================
