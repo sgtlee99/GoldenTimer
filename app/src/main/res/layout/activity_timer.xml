@@ -9,9 +9,64 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="그래서 이제 뭐함?"
         android:textSize="45sp"
         android:id="@+id/db_test_text"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:layout_gravity="center"
+        android:textSize="40sp"
+        android:id="@+id/timer_count"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00 : "
+        android:textSize="40sp"
+        android:id="@+id/timer_count_min"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textSize="40sp"
+        android:id="@+id/timer_count_sec"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정지"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:id="@+id/timer_pause"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작"
+            android:layout_weight="1"
+            android:layout_margin="15dp"
+            android:id="@+id/timer_start"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="리셋"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:id="@+id/timer_reset"/>
+    </LinearLayout>
 </LinearLayout>
