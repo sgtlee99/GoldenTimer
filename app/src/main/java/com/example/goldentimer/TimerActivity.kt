@@ -13,16 +13,10 @@ import kotlin.concurrent.timer
 import kotlin.concurrent.timerTask
 
 class TimerActivity : AppCompatActivity() {
-
+    //TAG
     val TAG = "TAG_Timer_Activity"
     //DB
     var db: AppDatabase? = null
-
-    //스톱워치 기능에 사용=======
-    private var time = 0
-    private var timerTask : Timer? = null
-    //========================
-
     //타이머
     private var currentCountDownTimer: CountDownTimer? = null
     //밀리초
@@ -125,27 +119,7 @@ class TimerActivity : AppCompatActivity() {
         //사운드
 
     }
-    //===============================================
-    //스톱워치 기능으로 변환예정
-    private fun startTimer() {      //타이머 시작
-        timerTask = timer(period = 10) {
-            time++
 
-            var sec = time / 100
-            var milli = time % 100
-            runOnUiThread {
-                timer_count.text = "${sec} : ${milli}"
-            }
-        }
-    }
-    private fun pauseTimer() {    //타이머 정지
-        timerTask?.cancel()
-    }
-    private fun resetTimer() {    //타이머 리셋
-        timerTask?.cancel()
-        time = 0
-        timer_count.text = "00 : 00"
-    }
 }
 
 
