@@ -17,6 +17,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.goldentimer.adapter.Menu_Adapter
+import com.example.goldentimer.database.AppDatabase
+import com.example.goldentimer.database.Timers
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
@@ -33,9 +35,15 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
     val TAG: String = "TAG_Custom_Activity"
     val adapter = GroupAdapter<GroupieViewHolder>()
 
+    var db : AppDatabase? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom)
+
+        //DB초기화
+        db = AppDatabase.getInstance(this)
 
         //제목, 메뉴, 이미지, 시간
         //이미지는 기본 에셋제공하여 선택하는 구조
@@ -49,6 +57,8 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         boil.setOnClickListener(this)
 
         recyclerview_menu.adapter = adapter
+
+        var db_alarm_menu : String = ""
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->
             var selected: String = ""
@@ -56,11 +66,16 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             Log.d(TAG, selected)     //선택한 메뉴가 뭔지 보여주는 LOG
             //이미지 리소스 하드 코딩 -> ENUM type으로 변경해보자
             when (selected) {
-                "라면" -> menu_preview_img.setImageResource(R.drawable.ramen)
-                "소면" -> menu_preview_img.setImageResource(R.drawable.soba)
-                "우동" -> menu_preview_img.setImageResource(R.drawable.udon)
-                "파스타" -> menu_preview_img.setImageResource(R.drawable.pasta)
-                else -> menu_preview_img.setImageResource(R.drawable.default_image)
+                "라면" -> {menu_preview_img.setImageResource(R.drawable.ramen)
+                db_alarm_menu = selected}
+                "소면" -> {menu_preview_img.setImageResource(R.drawable.soba)
+                    db_alarm_menu = selected}
+                "우동" -> {menu_preview_img.setImageResource(R.drawable.udon)
+                    db_alarm_menu = selected}
+                "파스타" -> {menu_preview_img.setImageResource(R.drawable.pasta)
+                    db_alarm_menu = selected}
+                else -> {menu_preview_img.setImageResource(R.drawable.default_image)
+                    db_alarm_menu = selected}
             }
         }
         test_button.setOnClickListener {
@@ -68,13 +83,22 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             Log.d(TAG, "dialog 실행")
         }
 
+        //title, menu, menu_img, min, sec
         timer_save_button.setOnClickListener {
             //설정내용 재확인
 //            ReConfirmDialog()
-
+            //바로 DB에 넣기
+//            val custom_timer = Timers()
+//            db?.timersDao().add(custom_timer)
+            var db_alarm_title = alarm_title.text.toString()
+            var db_alarm_min = time_set_min.text.toString()
+            var db_alarm_sec = time_set_sec.text.toString()
+            //굳이 시간을 정수형으로 넣을 필요가 있을까
+            Log.d(TAG, "$db_alarm_title $db_alarm_menu $db_alarm_min $db_alarm_sec")
         }
     }
 
+    //OnClick 메소드
     @SuppressLint("ResourceAsColor")
     override fun onClick(p0: View?) {
         when (p0?.id) {
@@ -142,7 +166,9 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         }
         start.setOnClickListener {
             Toast.makeText(this, "${minute.value}분 ${second.value}초", Toast.LENGTH_SHORT).show()
-            tv1.text = "${minute.value}분 ${second.value}초"
+//            tv1.text = "${minute.value}분 ${second.value}초"
+            time_set_min.text = "${minute.value}"
+            time_set_sec.text = "${second.value}"
             dialog.dismiss()
         }
 

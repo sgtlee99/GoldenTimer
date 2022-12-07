@@ -50,9 +50,7 @@ class MainActivity : AppCompatActivity() {
         adapter.setItemClickListener(object : Timer_Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val timers = timersList[position]
-
                 Toast.makeText(this@MainActivity, "Clicked item ${timers}!! ${timers.t_title}", Toast.LENGTH_SHORT ).show()
-
             }
 
         })
@@ -63,17 +61,17 @@ class MainActivity : AppCompatActivity() {
 
         add_button.setOnClickListener {
             //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
-//            var intent = Intent(this, CustomActivity::class.java)
-//            startActivity(intent)
+            var intent = Intent(this, CustomActivity::class.java)
+            startActivity(intent)
             //추후 삭제 예정
 
             //테스트용!!!!!!
             //데이터 추가!!!!
-            val timer = Timers("테스트", "메뉴", loadBitmap(R.drawable.ramen),3,15)    //Timers 생성
-            db?.timersDao()?.insert(timer)
-            timersList.add(timer)
+//            val timer = Timers("테스트", "메뉴", loadBitmap(R.drawable.ramen),3,15)    //Timers 생성
+//            db?.timersDao()?.insert(timer)
+//            timersList.add(timer)
 
-            adapter.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()    //이 코드가 있어야 정상적으로 추가가 됨 (실시간)
 
         }
 
@@ -90,7 +88,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun loadBitmap(img_resourse: Int): Bitmap? {        //이미지 리소스를 비트맵으로 변경시켜주는 함수
+    fun loadBitmap(img_resourse: Int): Bitmap? {
+        //이미지 리소스를 비트맵으로 변경
         val drawable = getDrawable(img_resourse)
         val bitmapDrawable = drawable as BitmapDrawable
         val bitmap = bitmapDrawable.bitmap
