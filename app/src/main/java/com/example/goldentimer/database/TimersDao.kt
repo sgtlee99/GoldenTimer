@@ -11,6 +11,9 @@ interface TimersDao {
     @Query("SELECT * FROM tb_timers")
     fun getAll() : List<Timers>
 
+    @Query("SELECT * FROM tb_timers WHERE id = :num")
+    fun getById(num: Int) : Timers
+
     @Insert
     fun insert(vararg timers : Timers)
 

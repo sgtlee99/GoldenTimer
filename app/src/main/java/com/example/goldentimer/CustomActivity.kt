@@ -5,6 +5,8 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -87,14 +89,23 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         timer_save_button.setOnClickListener {
             //설정내용 재확인
 //            ReConfirmDialog()
-            //바로 DB에 넣기
-//            val custom_timer = Timers()
-//            db?.timersDao().add(custom_timer)
+
             var db_alarm_title = alarm_title.text.toString()
             var db_alarm_min = time_set_min.text.toString()
             var db_alarm_sec = time_set_sec.text.toString()
-            //굳이 시간을 정수형으로 넣을 필요가 있을까
+            var db_alarm_img = menu_preview_img.drawable
+            //바로 DB에 넣기
+            val custom_timer = Timers(db_alarm_title, db_alarm_menu, loadBitmap(R.drawable.ramen), db_alarm_min, db_alarm_sec)
+            db?.timersDao()?.insert(custom_timer)
+
             Log.d(TAG, "$db_alarm_title $db_alarm_menu $db_alarm_min $db_alarm_sec")
+
+            //mainactivity로 이동
+            val intent = Intent(this, MainActivity::class.java)
+            //전 액티비티 지워줌
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+
         }
     }
 
@@ -178,6 +189,13 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         dialog.window!!.setLayout(750,WindowManager.LayoutParams.WRAP_CONTENT)
     }
 
+    fun loadBitmap(img_resourse: Int): Bitmap? {
+        //이미지 리소스를 비트맵으로 변경
+        val drawable = getDrawable(img_resourse)
+        val bitmapDrawable = drawable as BitmapDrawable
+        val bitmap = bitmapDrawable.bitmap
+        return bitmap
+    }
 
     fun ReConfirmDialog() {     //설정한 데이터가 맞는지 재확인하는 dialog
         val dialog = AlertDialog.Builder(this)

@@ -10,8 +10,8 @@ data class Timers(
     var t_title : String,
     var t_menu : String,
     var t_img : Bitmap? = null,
-    var t_min : Int,
-    var t_sec : Int
+    var t_min : String,
+    var t_sec : String
 ) {
     @PrimaryKey(autoGenerate = true)
     var id : Int? = null

@@ -23,7 +23,7 @@ class Timer_Adapter(private val itemList : List<Timers>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: TimerViewHolder, position: Int) {
         val item = itemList[position]
         holder.itemView.setOnClickListener {
-            itemClickListener
+            itemClickListener.onClick(it, position)
         }
         holder.apply {
             bind(item)
@@ -38,9 +38,12 @@ class Timer_Adapter(private val itemList : List<Timers>) : RecyclerView.Adapter<
     interface OnItemClickListener {
         fun onClick(v : View, position : Int)
     }
-    private lateinit var itemClickListener : OnItemClickListener
-
+    //외부에서 클릭시 이벤트 설정
     fun setItemClickListener(itemClickListener: OnItemClickListener) {
         this.itemClickListener = itemClickListener
     }
+    // setItemClickListener로 설정한 함수 실행
+    private lateinit var itemClickListener : OnItemClickListener
+
+
 }

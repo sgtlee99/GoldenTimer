@@ -5,18 +5,13 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.goldentimer.adapter.TimerModel
 import com.example.goldentimer.adapter.Timer_Adapter
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.Timer
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         db = AppDatabase.getInstance(this)
         //이전에 저장한 내용 모두 불러와서 추가
         val savedTimers = db!!.timersDao().getAll()
-        if(savedTimers.isNotEmpty()) {
+        if (savedTimers.isNotEmpty()) {
             timersList.addAll(savedTimers)
         }
 
@@ -50,7 +45,11 @@ class MainActivity : AppCompatActivity() {
         adapter.setItemClickListener(object : Timer_Adapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 val timers = timersList[position]
-                Toast.makeText(this@MainActivity, "Clicked item ${timers}!! ${timers.t_title}", Toast.LENGTH_SHORT ).show()
+                Log.d(TAG, "Clicked item ${timers}!! ${timers.id}")
+                toTimer(timers.id)
+                //타이머 화면으로 이동
+                Log.d(TAG, "Main -> Timer | Button | Clicked!")
+
             }
 
         })
@@ -61,13 +60,14 @@ class MainActivity : AppCompatActivity() {
 
         add_button.setOnClickListener {
             //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
-            var intent = Intent(this, CustomActivity::class.java)
-            startActivity(intent)
+            Log.d(TAG, "Main -> Custom | Button | Clicked!")
+            toCustom()
+
             //추후 삭제 예정
 
             //테스트용!!!!!!
             //데이터 추가!!!!
-//            val timer = Timers("테스트", "메뉴", loadBitmap(R.drawable.ramen),3,15)    //Timers 생성
+//            val timer = Timers("테스트", "메뉴", loadBitmap(R.drawable.ramen),"3","15")    //Timers 생성
 //            db?.timersDao()?.insert(timer)
 //            timersList.add(timer)
 
@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     fun loadBitmap(img_resourse: Int): Bitmap? {
         //이미지 리소스를 비트맵으로 변경
         val drawable = getDrawable(img_resourse)
@@ -96,15 +98,27 @@ class MainActivity : AppCompatActivity() {
         return bitmap
     }
 
-    private fun tempTimer(): ArrayList<Timers> {
-        var tempTimers = ArrayList<Timers>()
-
-
-        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 30, 0))
-        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 34, 0))
-        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 5, 0))
-        return tempTimers
-
+    //    private fun tempTimer(): ArrayList<Timers> {
+//        var tempTimers = ArrayList<Timers>()
+//
+//
+//        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 30, 0))
+//        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 34, 0))
+//        tempTimers.add(Timers("황금비율", "신라면", loadBitmap(R.drawable.ramen), 5, 0))
+//        return tempTimers
+//
+//    }
+    private fun toTimer(num: Int?) {
+        var intent = Intent(this, TimerActivity::class.java)
+        if (num == null) {
+            intent.putExtra("timer-id", 404)
+        } else {
+            intent.putExtra("timer-id", num)
+        }
+        startActivity(intent)
     }
-
+    private fun toCustom() {
+        var intent = Intent(this, CustomActivity::class.java)
+        startActivity(intent)
+    }
 }
