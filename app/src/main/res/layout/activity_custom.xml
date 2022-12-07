@@ -156,6 +156,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="MIN"
+			android:textSize="25sp"
 			android:layout_gravity="center"
 			android:id="@+id/time_set_min"
 			/>
@@ -164,6 +165,8 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text=" : "
+			android:textSize="25sp"
+
 			android:layout_gravity="center"
 			/>
 
@@ -171,11 +174,17 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="SEC"
+			android:textSize="25sp"
+
 			android:id="@+id/time_set_sec"
 			/>
 	</LinearLayout>
 
-
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+	</LinearLayout>
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
