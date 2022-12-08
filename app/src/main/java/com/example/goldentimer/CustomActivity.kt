@@ -84,12 +84,10 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             callNumberPickerDialog()
             Log.d(TAG, "dialog 실행")
         }
-
-        //title, menu, menu_img, min, sec
+        //타이머 내용 DB에 저장
         timer_save_button.setOnClickListener {
             //설정내용 재확인
 //            ReConfirmDialog()
-
             var db_alarm_title = alarm_title.text.toString()
             var db_alarm_min = time_set_min.text.toString()
             var db_alarm_sec = time_set_sec.text.toString()
