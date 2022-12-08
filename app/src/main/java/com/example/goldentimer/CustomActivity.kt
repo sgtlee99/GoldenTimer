@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.goldentimer.adapter.Menu_Adapter
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
+import com.example.goldentimer.model.MenuType
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
@@ -39,6 +40,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
 
     var db : AppDatabase? = null
 
+    var selected: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,25 +62,16 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
 
         recyclerview_menu.adapter = adapter
 
-        var db_alarm_menu : String = ""
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->
-            var selected: String = ""
-            selected = (item as Menu_Adapter).menu                            //선택한 미리보기 이미지
+            selected = (item as Menu_Adapter).menu //선택한 미리보기 이미지
             Log.d(TAG, selected)     //선택한 메뉴가 뭔지 보여주는 LOG
+
+            val menuType = MenuType.findByMenu(selected)
             //이미지 리소스 하드 코딩 -> ENUM type으로 변경해보자
-            when (selected) {
-                "라면" -> {menu_preview_img.setImageResource(R.drawable.ramen)
-                db_alarm_menu = selected}
-                "소면" -> {menu_preview_img.setImageResource(R.drawable.soba)
-                    db_alarm_menu = selected}
-                "우동" -> {menu_preview_img.setImageResource(R.drawable.udon)
-                    db_alarm_menu = selected}
-                "파스타" -> {menu_preview_img.setImageResource(R.drawable.pasta)
-                    db_alarm_menu = selected}
-                else -> {menu_preview_img.setImageResource(R.drawable.default_image)
-                    db_alarm_menu = selected}
-            }
+
+            menu_preview_img.setImageResource(menuType!!.img_resource)
+
         }
         test_button.setOnClickListener {
             callNumberPickerDialog()
@@ -86,14 +79,17 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         }
         //타이머 내용 DB에 저장
         timer_save_button.setOnClickListener {
+            val menuType = MenuType.findByMenu(selected)
+
             //설정내용 재확인
 //            ReConfirmDialog()
             var db_alarm_title = alarm_title.text.toString()
+            var db_alarm_menu : String = menuType!!.menu_name
             var db_alarm_min = time_set_min.text.toString()
             var db_alarm_sec = time_set_sec.text.toString()
             var db_alarm_img = menu_preview_img.drawable
             //바로 DB에 넣기
-            val custom_timer = Timers(db_alarm_title, db_alarm_menu, loadBitmap(R.drawable.ramen), db_alarm_min, db_alarm_sec)
+            val custom_timer = Timers(db_alarm_title, db_alarm_menu, loadBitmap(menuType.img_resource), db_alarm_min, db_alarm_sec)
             db?.timersDao()?.insert(custom_timer)
 
             Log.d(TAG, "$db_alarm_title $db_alarm_menu $db_alarm_min $db_alarm_sec")
