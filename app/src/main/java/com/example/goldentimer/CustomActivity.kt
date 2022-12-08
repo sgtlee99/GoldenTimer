@@ -117,6 +117,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
                 adapter.clear()
                 adapter.add(Menu_Adapter("라면"))
                 adapter.add(Menu_Adapter("소면"))
+                adapter.add(Menu_Adapter("중면"))
                 adapter.add(Menu_Adapter("우동"))
                 adapter.add(Menu_Adapter("파스타"))
             }
@@ -132,7 +133,6 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
                 adapter.clear()
                 adapter.add(Menu_Adapter("완숙"))
                 adapter.add(Menu_Adapter("반숙"))
-                adapter.add(Menu_Adapter("중면"))
             }
             else -> {
                 adapter.add(Menu_Adapter("라면"))
