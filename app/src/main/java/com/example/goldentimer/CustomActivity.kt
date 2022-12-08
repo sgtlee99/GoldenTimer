@@ -206,5 +206,5 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         })
         dialog.show()
     }
-
+//
 }
