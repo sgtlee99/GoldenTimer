@@ -30,6 +30,10 @@
             android:hint="알람 이름" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <TextView
         android:layout_width="match_parent"
@@ -40,87 +44,41 @@
         android:text="메뉴" />
 
     <!--	이미지버튼으로 교체예정-->
-    <LinearLayout
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/noodle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="면" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/noodle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="면" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/fry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="튀김" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/fry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="튀김" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/bake"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="굽기" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/bake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="굽기" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/boil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="삶기" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/boil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삶기" />
 
-        </com.google.android.material.tabs.TabLayout>
-        <!--        <com.google.android.material.chip.ChipGroup-->
-        <!--            android:id="@+id/menu_chipgroup"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:padding="16dp"-->
-        <!--            app:singleSelection="true">-->
+    </com.google.android.material.tabs.TabLayout>
 
-        <!--            <com.google.android.material.chip.Chip-->
-        <!--                style="@style/Widget.MaterialComponents.Chip.Filter"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="면"-->
-        <!--                android:id="@+id/noodle"-->
 
-        <!--                />-->
-
-        <!--            <com.google.android.material.chip.Chip-->
-
-        <!--                style="@style/Widget.MaterialComponents.Chip.Filter"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="볶기"-->
-        <!--                android:id="@+id/fry"-->
-
-        <!--                />-->
-
-        <!--            <com.google.android.material.chip.Chip-->
-        <!--                style="@style/Widget.MaterialComponents.Chip.Filter"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="굽기"-->
-        <!--                android:id="@+id/bake"-->
-
-        <!--                />-->
-
-        <!--            <com.google.android.material.chip.Chip-->
-        <!--                style="@style/Widget.MaterialComponents.Chip.Filter"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="삶기"-->
-        <!--                android:id="@+id/boil"-->
-
-        <!--                />-->
-        <!--        </com.google.android.material.chip.ChipGroup>-->
-
-    </LinearLayout>
     <!--	메뉴선택-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_menu"
@@ -128,6 +86,10 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -162,12 +124,18 @@
         android:text="메뉴"
         android:textSize="24sp" />
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
+
         android:text="시간 설정" />
 
     <Button

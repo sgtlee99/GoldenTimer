@@ -7,54 +7,105 @@
     android:orientation="vertical"
     tools:context=".StopwatchActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00"
-        android:layout_gravity="center"
-        android:textSize="40sp"
-        android:id="@+id/s_timer_count"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="정지"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:id="@+id/s_timer_pause"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시작"
-            android:layout_weight="1"
-            android:layout_margin="15dp"
-            android:id="@+id/s_timer_start"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="리셋"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:id="@+id/s_timer_reset"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="기록"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:id="@+id/s_timer_record"/>
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/s_timer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="00"
+                android:textSize="40sp" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                app:dividerInsetEnd="15dp"
+                app:dividerInsetStart="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/stopwatch_chipgroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    app:singleLine="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_timer_pause"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="정지"
+                        app:chipIcon="@drawable/pause_icon"
+                        app:iconEndPadding="5dp"
+                        app:iconStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_timer_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시작"
+                        app:chipIcon="@drawable/start_icon"
+                        app:iconEndPadding="5dp"
+                        app:iconStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_timer_reset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="리셋"
+                        app:chipIcon="@drawable/reset_icon"
+                        app:iconEndPadding="5dp"
+                        app:iconStartPadding="5dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/s_timer_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기록"
+                        app:chipIcon="@drawable/record_icon"
+                        app:iconEndPadding="5dp"
+                        app:iconStartPadding="5dp" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:dividerInsetEnd="15dp"
+                    app:dividerInsetStart="15dp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/record_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </LinearLayout>
+        android:layout_weight="1"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

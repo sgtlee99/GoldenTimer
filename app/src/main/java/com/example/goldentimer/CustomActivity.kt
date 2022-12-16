@@ -154,43 +154,11 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
 
         }
+        //뒤로버튼
+        back_button.setOnClickListener {
+            finish()
+        }
     }
-
-
-//    //OnClick 메소드
-//    @SuppressLint("ResourceAsColor")
-//    override fun onClick(p0: View?) {
-//        when (p0?.id) {
-//            noodle.id -> {
-//                adapter.clear()
-//                adapter.add(Menu_Adapter("라면"))
-//                adapter.add(Menu_Adapter("소면"))
-//                adapter.add(Menu_Adapter("중면"))
-//                adapter.add(Menu_Adapter("우동"))
-//                adapter.add(Menu_Adapter("파스타"))
-//            }
-//            fry.id -> {
-//                adapter.clear()
-//                adapter.add(Menu_Adapter("프라이"))
-//            }
-//            bake.id -> {
-//                adapter.clear()
-//                adapter.add(Menu_Adapter("베이킹"))
-//            }
-//            boil.id -> {
-//                adapter.clear()
-//                adapter.add(Menu_Adapter("완숙"))
-//                adapter.add(Menu_Adapter("반숙"))
-//            }
-//            else -> {
-//                adapter.add(Menu_Adapter("라면"))
-//                adapter.add(Menu_Adapter("소면"))
-//                adapter.add(Menu_Adapter("중면"))
-//                adapter.add(Menu_Adapter("우동"))
-//                adapter.add(Menu_Adapter("파스타"))
-//            }
-//        }
-//    }
 
     //분, 초를 선택하는 numberPicker
     fun callNumberPickerDialog() {
@@ -261,11 +229,10 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         dialog.show()
     }
 
+    //왜 오버라이드 구현해야겠는지는 모르겠음
     override fun onClick(p0: View?) {
         TODO("Not yet implemented")
     }
 
-
-//
 }
 
