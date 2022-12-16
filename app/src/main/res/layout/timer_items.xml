@@ -11,9 +11,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="80dp"
 		android:layout_margin="15dp"
-		app:strokeWidth="3dp"
-		app:strokeColor="#f00"
-		app:cardCornerRadius="10dp"
+		android:background="@drawable/my_rect_shadow"
 		>
 		<LinearLayout
 			android:layout_width="match_parent"
