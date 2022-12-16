@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.NumberPicker
+import android.widget.TableLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ import com.example.goldentimer.adapter.Menu_Adapter
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
 import com.example.goldentimer.model.MenuType
+import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
@@ -32,13 +34,12 @@ import java.util.*
 import kotlin.concurrent.timer
 
 
-
 class CustomActivity : AppCompatActivity(), View.OnClickListener {
 
     val TAG: String = "TAG_Custom_Activity"
     val adapter = GroupAdapter<GroupieViewHolder>()
 
-    var db : AppDatabase? = null
+    var db: AppDatabase? = null
 
     var selected: String = ""
 
@@ -55,12 +56,58 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         //아래의 메뉴 리스트의 아이템들이 변경된다
         //설정이 완료되면 내부 DB에 저장된다
 
-        noodle.setOnClickListener(this)
-        fry.setOnClickListener(this)
-        bake.setOnClickListener(this)
-        boil.setOnClickListener(this)
+//        noodle.setOnClickListener(this)
+//        fry.setOnClickListener(this)
+//        bake.setOnClickListener(this)
+//        boil.setOnClickListener(this)
 
         recyclerview_menu.adapter = adapter
+
+//        val tablayout = tab_layout
+
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.text) {
+                    "면" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("라면"))
+                        adapter.add(Menu_Adapter("소면"))
+                        adapter.add(Menu_Adapter("중면"))
+                        adapter.add(Menu_Adapter("우동"))
+                        adapter.add(Menu_Adapter("파스타"))
+                    }
+                    "튀김" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("프라이"))
+                    }
+                    "굽기" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("베이킹"))
+                    }
+                    "삶기" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("완숙"))
+                        adapter.add(Menu_Adapter("반숙"))
+                    }
+                    else -> {
+                        adapter.add(Menu_Adapter("라면"))
+                        adapter.add(Menu_Adapter("소면"))
+                        adapter.add(Menu_Adapter("중면"))
+                        adapter.add(Menu_Adapter("우동"))
+                        adapter.add(Menu_Adapter("파스타"))
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                //Not yet implemented
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                //Not yet implemented
+            }
+
+        })
 
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->
@@ -84,12 +131,18 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             //설정내용 재확인
 //            ReConfirmDialog()
             var db_alarm_title = alarm_title.text.toString()
-            var db_alarm_menu : String = menuType!!.menu_name
+            var db_alarm_menu: String = menuType!!.menu_name
             var db_alarm_min = time_set_min.text.toString()
             var db_alarm_sec = time_set_sec.text.toString()
             var db_alarm_img = menu_preview_img.drawable
             //바로 DB에 넣기
-            val custom_timer = Timers(db_alarm_title, db_alarm_menu, loadBitmap(menuType.img_resource), db_alarm_min, db_alarm_sec)
+            val custom_timer = Timers(
+                db_alarm_title,
+                db_alarm_menu,
+                loadBitmap(menuType.img_resource),
+                db_alarm_min,
+                db_alarm_sec
+            )
             db?.timersDao()?.insert(custom_timer)
 
             Log.d(TAG, "$db_alarm_title $db_alarm_menu $db_alarm_min $db_alarm_sec")
@@ -103,40 +156,41 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    //OnClick 메소드
-    @SuppressLint("ResourceAsColor")
-    override fun onClick(p0: View?) {
-        when (p0?.id) {
-            noodle.id -> {
-                adapter.clear()
-                adapter.add(Menu_Adapter("라면"))
-                adapter.add(Menu_Adapter("소면"))
-                adapter.add(Menu_Adapter("중면"))
-                adapter.add(Menu_Adapter("우동"))
-                adapter.add(Menu_Adapter("파스타"))
-            }
-            fry.id -> {
-                adapter.clear()
-                adapter.add(Menu_Adapter("프라이"))
-            }
-            bake.id -> {
-                adapter.clear()
-                adapter.add(Menu_Adapter("베이킹"))
-            }
-            boil.id -> {
-                adapter.clear()
-                adapter.add(Menu_Adapter("완숙"))
-                adapter.add(Menu_Adapter("반숙"))
-            }
-            else -> {
-                adapter.add(Menu_Adapter("라면"))
-                adapter.add(Menu_Adapter("소면"))
-                adapter.add(Menu_Adapter("중면"))
-                adapter.add(Menu_Adapter("우동"))
-                adapter.add(Menu_Adapter("파스타"))
-            }
-        }
-    }
+
+//    //OnClick 메소드
+//    @SuppressLint("ResourceAsColor")
+//    override fun onClick(p0: View?) {
+//        when (p0?.id) {
+//            noodle.id -> {
+//                adapter.clear()
+//                adapter.add(Menu_Adapter("라면"))
+//                adapter.add(Menu_Adapter("소면"))
+//                adapter.add(Menu_Adapter("중면"))
+//                adapter.add(Menu_Adapter("우동"))
+//                adapter.add(Menu_Adapter("파스타"))
+//            }
+//            fry.id -> {
+//                adapter.clear()
+//                adapter.add(Menu_Adapter("프라이"))
+//            }
+//            bake.id -> {
+//                adapter.clear()
+//                adapter.add(Menu_Adapter("베이킹"))
+//            }
+//            boil.id -> {
+//                adapter.clear()
+//                adapter.add(Menu_Adapter("완숙"))
+//                adapter.add(Menu_Adapter("반숙"))
+//            }
+//            else -> {
+//                adapter.add(Menu_Adapter("라면"))
+//                adapter.add(Menu_Adapter("소면"))
+//                adapter.add(Menu_Adapter("중면"))
+//                adapter.add(Menu_Adapter("우동"))
+//                adapter.add(Menu_Adapter("파스타"))
+//            }
+//        }
+//    }
 
     //분, 초를 선택하는 numberPicker
     fun callNumberPickerDialog() {
@@ -180,7 +234,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         dialog.setView(mView)
         dialog.create()
         dialog.show()
-        dialog.window!!.setLayout(750,WindowManager.LayoutParams.WRAP_CONTENT)
+        dialog.window!!.setLayout(750, WindowManager.LayoutParams.WRAP_CONTENT)
     }
 
     fun loadBitmap(img_resourse: Int): Bitmap? {
@@ -206,5 +260,12 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         })
         dialog.show()
     }
+
+    override fun onClick(p0: View?) {
+        TODO("Not yet implemented")
+    }
+
+
 //
 }
+
