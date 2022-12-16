@@ -3,6 +3,7 @@ package com.example.goldentimer.model
 import com.example.goldentimer.R
 
 enum class MenuType(var menu_name: String, var img_resource: Int) {
+
     DEFAULT("default", R.drawable.default_image),
     //menu - noodle
     RAMEN("라면", R.drawable.ramen),
@@ -18,7 +19,7 @@ enum class MenuType(var menu_name: String, var img_resource: Int) {
     //menu - boil
     HALFBOILED("반숙",R.drawable.half_boiled_egg),
     HARDBOILED("완숙",R.drawable.hard_boiled_egg);
-    //
+
     companion object {
         private val MENU_CACHE: Map<String, MenuType> = values().associateBy {
             it.menu_name
