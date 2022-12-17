@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
         }
         btn_more.setOnClickListener {
             //더보기 -> firebase 연동
+            Log.d(TAG,"Main -> Login | Button | Clicked!")
+            toMore()
         }
     }
 
@@ -83,6 +85,11 @@ class MainActivity : AppCompatActivity() {
     }
     private fun toStopwatch(){
         var intent = Intent(this, StopwatchActivity::class.java)
+        startActivity(intent)
+    }
+    //둘러보기
+    private fun toMore() {
+        var intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 }

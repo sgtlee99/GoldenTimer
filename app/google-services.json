@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853885373317",
+    "project_id": "goldentimer-4111c",
+    "storage_bucket": "goldentimer-4111c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853885373317:android:2ba151296434144e2092ec",
+        "android_client_info": {
+          "package_name": "com.example.goldentimer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853885373317-l85r33j803vj54agi8ii5blltuf2f3qa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY36X4aTtlVVkielYvcRcXBGuIYrTWIsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853885373317-l85r33j803vj54agi8ii5blltuf2f3qa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
