@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.goldentimer.adapter.Menu_Adapter
 import com.example.goldentimer.adapter.Record_Adapter
+import com.google.android.material.tabs.TabLayout
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -47,7 +48,6 @@ class StopwatchActivity : AppCompatActivity() {
         }
 
 
-
         s_btn_timerlist.setOnClickListener {
             //메인으로 이동
             Log.d(TAG, "Stopwatch -> Main | Button | Clicked!")
@@ -56,6 +56,7 @@ class StopwatchActivity : AppCompatActivity() {
         s_btn_more.setOnClickListener {
             //더보기 -> firebase 연동
         }
+
     }
 
     private fun startTimer() {      //타이머 시작
@@ -80,12 +81,9 @@ class StopwatchActivity : AppCompatActivity() {
         s_timer_count.text = "00 : 00"
     }
 
-    private fun recodeTimer() {     //타이머 기록
-
-    }
-
     private fun toMain() {
         var intent = Intent(this, MainActivity::class.java)
+        finish()
         startActivity(intent)
     }
 }
