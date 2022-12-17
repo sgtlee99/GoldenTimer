@@ -25,7 +25,8 @@ class StopwatchActivity : AppCompatActivity() {
 
     //기록 어뎁터 그룹피
     val adapter = GroupAdapter<GroupieViewHolder>()
-    var generated_num : Int = 0
+    var generated_num: Int = 0
+    var rec: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +37,13 @@ class StopwatchActivity : AppCompatActivity() {
         //타이머 시작, 정지, 리셋 버튼
         s_timer_start.setOnClickListener { startTimer() }
         s_timer_pause.setOnClickListener { pauseTimer() }
-        s_timer_reset.setOnClickListener { resetTimer() }
+        s_timer_reset.setOnClickListener {
+            resetTimer()
+            adapter.clear()
+        }
         s_timer_record.setOnClickListener {
-            adapter.add(Record_Adapter(++generated_num, 1))
+            rec = s_timer_count.text.toString()
+            adapter.add(Record_Adapter(++generated_num, rec))
         }
 
 

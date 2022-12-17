@@ -6,7 +6,7 @@ import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.menu_items.view.*
 import kotlinx.android.synthetic.main.record_items.view.*
 
-class Record_Adapter(val r_num : Int, val r_time : Int) : Item<GroupieViewHolder>() {
+class Record_Adapter(val r_num : Int, val r_time : String) : Item<GroupieViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.record_items
     }
