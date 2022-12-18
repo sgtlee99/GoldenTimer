@@ -1,13 +1,16 @@
 package com.example.goldentimer
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import com.example.goldentimer.adapter.SwipeController
 import com.example.goldentimer.adapter.Timer_Adapter
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
@@ -22,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     var db: AppDatabase? = null
 
     var timersList = mutableListOf<Timers>()
+
+    //swipe test
+//    var swipeController : SwipeController? = null
+    var helper: ItemTouchHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +55,24 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        //swipe button 관련
+        helper = ItemTouchHelper(SwipeController(adapter))
+        helper!!.attachToRecyclerView(recyclerview_timer)
 
         recyclerview_timer.adapter = adapter
 
+        //swipe test
+//        swipeController = SwipeController(object : SwipeControllerActions() {
+//            override fun onRightClicked(position: Int) {
+//                adapter.players.remove(position)
+//                adapter.notifyItemRemoved(position)
+//                adapter.notifyItemRangeChanged(position, mAdapter.getItemCount())
+//            }
+//        })
+
+
+
+        //==
         add_button.setOnClickListener {
             //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
             Log.d(TAG, "Main -> Custom | Button | Clicked!")
@@ -69,6 +91,19 @@ class MainActivity : AppCompatActivity() {
             toMore()
         }
     }
+    //====test
+    private fun setUpRecyclerView() {
+        recyclerview_timer.addItemDecoration(object : ItemDecoration() {
+            override fun onDraw(
+                @NonNull c: Canvas,
+                @NonNull parent: RecyclerView,
+                @NonNull state: RecyclerView.State
+            ) {
+                helper!!.onDraw(c, parent, state)
+            }
+        })
+    }
+    //====test
 
     private fun toTimer(num: Int?) {
         var intent = Intent(this, TimerActivity::class.java)
