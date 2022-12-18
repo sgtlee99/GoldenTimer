@@ -76,6 +76,8 @@ dependencies {
     implementation "androidx.room:room-guava:$room_version"
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
     //파이어베이스
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
@@ -83,5 +85,6 @@ dependencies {
     //파이어스토어
     implementation platform('com.google.firebase:firebase-bom:30.5.0')
     implementation 'com.google.firebase:firebase-firestore-ktx'
+
 }
 //tasks.register("prepareKotlinBuildScriptModel"){}

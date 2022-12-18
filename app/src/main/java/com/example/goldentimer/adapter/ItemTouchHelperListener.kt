@@ -2,7 +2,7 @@ package com.example.goldentimer.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 
-interface ItemTouchHelperListener {
+public interface ItemTouchHelperListener {
     fun onItemMove(from_position: Int, to_position: Int): Boolean
     fun onItemSwipe(position: Int)
     fun onLeftClick(position: Int, viewHolder: RecyclerView.ViewHolder?)

@@ -1,8 +1,5 @@
 package com.example.goldentimer
 
-import android.annotation.SuppressLint
-import android.app.TimePickerDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
@@ -11,7 +8,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.NumberPicker
@@ -115,7 +111,6 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             Log.d(TAG, selected)     //선택한 메뉴가 뭔지 보여주는 LOG
 
             val menuType = MenuType.findByMenu(selected)
-            //이미지 리소스 하드 코딩 -> ENUM type으로 변경해보자
 
             menu_preview_img.setImageResource(menuType!!.img_resource)
 
