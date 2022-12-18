@@ -1,21 +1,21 @@
 package com.example.goldentimer
 
 import android.content.Intent
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.example.goldentimer.adapter.SwipeController
 import com.example.goldentimer.adapter.Timer_Adapter
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     var db: AppDatabase? = null
 
     var timersList = mutableListOf<Timers>()
+
     //swipe test
 //    var helper: ItemTouchHelper? = null
     private val p: Paint = Paint()
@@ -45,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         if (savedTimers.isNotEmpty()) {
             timersList.addAll(savedTimers)
         }
-
 
 
         //어댑터 연결, 아이템 클릭 -> 토스트
@@ -97,9 +97,14 @@ class MainActivity : AppCompatActivity() {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     if (direction == ItemTouchHelper.LEFT) { //왼쪽으로 스와이프
-                            timersList.removeAt(position)
-                            adapter?.notifyItemRemoved(position)
-                            db?.timersDao()?.deleteById(position)
+
+                        val timer = Timers()
+                        timer.id = timersList[position].id
+                        timersList.removeAt(position)
+                        adapter?.notifyItemRemoved(position)
+
+                        var db: AppDatabase? = AppDatabase.getInstance(applicationContext)
+                        db?.timersDao()?.delete(timer)
                     } else {    //오른쪽으로 스와이프
 
                     }

@@ -200,7 +200,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         dialog.window!!.setLayout(750, WindowManager.LayoutParams.WRAP_CONTENT)
     }
 
-    fun loadBitmap(img_resourse: Int): Bitmap? {
+    private fun loadBitmap(img_resourse: Int): Bitmap? {
         //이미지 리소스를 비트맵으로 변경
         val drawable = getDrawable(img_resourse)
         val bitmapDrawable = drawable as BitmapDrawable
