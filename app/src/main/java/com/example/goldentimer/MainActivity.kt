@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
+                //
 
                 override fun onChildDraw(
                     c: Canvas,
