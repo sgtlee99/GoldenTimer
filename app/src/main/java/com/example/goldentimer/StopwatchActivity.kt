@@ -12,7 +12,6 @@ import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_stopwatch.*
 import kotlinx.android.synthetic.main.activity_timer.*
-import kotlinx.android.synthetic.main.activity_timer.timer_count
 import java.util.*
 import kotlin.concurrent.timer
 

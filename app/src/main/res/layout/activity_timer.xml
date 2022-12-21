@@ -8,82 +8,134 @@
     tools:context=".TimerActivity">
 
     <TextView
+        android:id="@+id/timer_get_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="제목"
-        android:textSize="45sp"
-        android:layout_gravity="center"
-        android:id="@+id/timer_get_title"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메뉴"
-        android:textSize="45sp"
-        android:layout_gravity="center"
-        android:id="@+id/timer_get_menu"/>
+        android:textSize="45sp" />
+
     <ImageView
+        android:id="@+id/timer_get_menuimage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/default_image"
         android:layout_gravity="center"
-        android:id="@+id/timer_get_menuimage"/>
-
-
+        android:src="@drawable/default_image" />
 
     <TextView
+        android:id="@+id/timer_get_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00"
         android:layout_gravity="center"
-        android:textSize="40sp"
-        android:id="@+id/timer_count"
-        />
+        android:text="메뉴"
+        android:textSize="45sp" />
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00 : "
-        android:textSize="40sp"
-        android:id="@+id/timer_count_min"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00"
-        android:textSize="40sp"
-        android:id="@+id/timer_count_sec"
-        />
+
+        <TextView
+            android:id="@+id/timer_count_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 : "
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/timer_count_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textSize="40sp" />
     </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/timer_pause"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
             android:text="정지"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:id="@+id/timer_pause"/>
+            app:icon="@drawable/stop_icon"
+            app:iconPadding="4dp"
+            app:iconSize="35dp" />
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/timer_start"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
             android:text="시작"
-            android:layout_weight="1"
-            android:layout_margin="15dp"
-            android:id="@+id/timer_start"/>
+            app:icon="@drawable/start_icon"
+            app:iconPadding="4dp"
+            app:iconSize="35dp" />
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="리셋"
-            android:layout_margin="15dp"
+            android:id="@+id/timer_reset"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:id="@+id/timer_reset"/>
+            android:text="리셋"
+            app:icon="@drawable/reset_icon"
+            app:iconPadding="4dp"
+            app:iconSize="25dp" />
+
+
+        <!--        <Button-->
+        <!--            android:id="@+id/timer_pause"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:text="정지" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/timer_start"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:text="시작" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/timer_reset"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:text="리셋" />-->
     </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/name_adding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/bright_gray"
+        android:contentDescription="test"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/share_icon"
+
+        />
 </LinearLayout>

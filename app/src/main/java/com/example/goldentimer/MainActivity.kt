@@ -97,7 +97,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val position = viewHolder.adapterPosition
                     if (direction == ItemTouchHelper.LEFT) { //왼쪽으로 스와이프
-
                         val timer = Timers()
                         timer.id = timersList[position].id
                         timersList.removeAt(position)
@@ -105,6 +104,7 @@ class MainActivity : AppCompatActivity() {
 
                         var db: AppDatabase? = AppDatabase.getInstance(applicationContext)
                         db?.timersDao()?.delete(timer)
+                        Log.d(TAG, "$timersList ${timersList.size}")
                     } else {    //오른쪽으로 스와이프
 
                     }
@@ -185,7 +185,9 @@ class MainActivity : AppCompatActivity() {
 
     //둘러보기
     private fun toMore() {
-        var intent = Intent(this, LoginActivity::class.java)
+//        var intent = Intent(this, LoginActivity::class.java)
+//        startActivity(intent)
+        var intent = Intent(this, ShareActivity::class.java)
         startActivity(intent)
     }
 }

@@ -1,13 +1,34 @@
 package com.example.goldentimer
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.goldentimer.database.AppDatabase
+import com.example.goldentimer.model.Share
+import com.example.goldentimer.model.User
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import io.reactivex.Completable.timer
+import kotlinx.android.synthetic.main.activity_join.*
 import kotlinx.android.synthetic.main.activity_timer.*
+import kotlinx.android.synthetic.main.sharedialog_edittext.*
+import kotlinx.android.synthetic.main.sharedialog_edittext.view.*
+import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.concurrent.timer
 import kotlin.concurrent.timerTask
@@ -15,18 +36,24 @@ import kotlin.concurrent.timerTask
 class TimerActivity : AppCompatActivity() {
     //TAG
     val TAG = "TAG_Timer_Activity"
+
     //DB
     var db: AppDatabase? = null
+
     //타이머
     private var currentCountDownTimer: CountDownTimer? = null
     //밀리초
+
+
+    //파이어베이스
+    val fb_db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
 
         //main 에서 선택한 타이머 리스트의 id 값을 intent로 받아옴
-        var received_id : Int = 0
+        var received_id: Int = 0
         if (intent.hasExtra("timer-id")) {
             received_id = intent.getIntExtra("timer-id", 404)
         } else {
@@ -36,7 +63,24 @@ class TimerActivity : AppCompatActivity() {
         db = AppDatabase.getInstance(this)
         //받아온 id를 사용하여 db에서 해당 행을 반환
         var set_timer = db!!.timersDao().getById(num = received_id)
-        Log.d(TAG, "${set_timer.t_title} ${set_timer.t_menu} ${set_timer.t_img} ${set_timer.t_min} ${set_timer.t_sec}")
+        Log.d(
+            TAG,
+            "${set_timer.t_title} ${set_timer.t_menu} ${set_timer.t_img} ${set_timer.t_min} ${set_timer.t_sec}"
+        )
+
+        //이름추가 버튼
+        name_adding.setOnClickListener {
+            Log.d(TAG, "Share Button Click!")
+
+            shareDialog(
+                set_timer.t_title,
+                set_timer.t_menu,
+                set_timer.t_img,
+                set_timer.t_min,
+                set_timer.t_sec
+            )
+        }
+
 
         //타이머 시작, 정지, 리셋 버튼
 //        timer_start.setOnClickListener { startTimer() }
@@ -51,26 +95,39 @@ class TimerActivity : AppCompatActivity() {
         timer_get_menuimage.setImageBitmap(set_timer.t_img)
 
         //타이머 코드
-        timer_start.setOnClickListener { startCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
-        timer_pause.setOnClickListener { stopCountDown(convertTime(set_timer.t_min, set_timer.t_sec)) }
-
+        timer_start.setOnClickListener {
+            startCountDown(
+                convertTime(
+                    set_timer.t_min,
+                    set_timer.t_sec
+                )
+            )
+        }
+        timer_pause.setOnClickListener {
+            stopCountDown(
+                convertTime(
+                    set_timer.t_min,
+                    set_timer.t_sec
+                )
+            )
+        }
 
 
     }
 
-    private fun convertTime(min : String, sec : String) : Long {
+    private fun convertTime(min: String, sec: String): Long {
         //String으로 들어온 시간 형변환
         var c_min = min.toInt()
         var c_sec = sec.toInt()
         //밀리초로 변환
-        var m_min : Long = c_min * 60000L
-        var m_sec : Long = c_sec * 1000L
+        var m_min: Long = c_min * 60000L
+        var m_sec: Long = c_sec * 1000L
         //밀리초 단위로 변환한 수를 반환
         return m_min + m_sec
     }
 
     //카운트다운 타이머
-    private fun createCountDownTimer(initialMills : Long) =
+    private fun createCountDownTimer(initialMills: Long) =
         object : CountDownTimer(initialMills, 1000L) {
             override fun onTick(p0: Long) {
                 updateRemainTime(p0)
@@ -81,8 +138,9 @@ class TimerActivity : AppCompatActivity() {
             }
 
         }
+
     //카운트다운 끝남
-    private fun completeCountDown(){
+    private fun completeCountDown() {
         updateRemainTime(0)
 //        updateSeekBar(0)
 
@@ -96,23 +154,24 @@ class TimerActivity : AppCompatActivity() {
     }
 
     //남은시간 업데이트
-    private fun updateRemainTime(remainMillis: Long){
+    private fun updateRemainTime(remainMillis: Long) {
         // 총 남은 초
-        val remainSeconds = remainMillis/1000
+        val remainSeconds = remainMillis / 1000
 
         // 분만 보여줌, 초만 보여줌
-        timer_count_min.text = "%02d:".format(remainSeconds/60)
-        timer_count_sec.text= "%02d".format(remainSeconds%60)
+        timer_count_min.text = "%02d:".format(remainSeconds / 60)
+        timer_count_sec.text = "%02d".format(remainSeconds % 60)
 
     }
 
     //카운트 다운 멈춤
-    private fun stopCountDown(millitime : Long) {
+    private fun stopCountDown(millitime: Long) {
         currentCountDownTimer = createCountDownTimer(millitime)
         currentCountDownTimer = null
     }
+
     //카운트 다운 시작
-    private fun startCountDown(millitime : Long) {
+    private fun startCountDown(millitime: Long) {
         currentCountDownTimer = createCountDownTimer(millitime)
         currentCountDownTimer?.start()
 
@@ -120,6 +179,65 @@ class TimerActivity : AppCompatActivity() {
 
     }
 
+
+    //=====다이얼로그
+    private fun shareDialog(title: String, menu: String, image: Bitmap?, min: String, sec: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("공유에 사용할 이름을 입력해주세요")
+        val inflater: LayoutInflater = layoutInflater
+        builder.setView(inflater.inflate(R.layout.sharedialog_edittext, null))
+
+        var listener = DialogInterface.OnClickListener { dialogInterface, i ->
+            var dialog = dialogInterface as AlertDialog
+            //공유에 사용할 이름
+            var name: EditText? = dialog.findViewById<EditText>(R.id.share_by_name)
+            var sh_name: String = name?.text.toString()
+            //받아온 데이터
+            Log.d(TAG, "$title $menu $image $min $sec")
+            Log.d(TAG, "${sh_name}")
+
+            var imageurl : String = BitmaptoString(image)
+
+            val share = Share(
+                sh_title = title,
+                sh_menu = menu,
+                sh_image = imageurl,
+                sh_min = min,
+                sh_sec = sec,
+                sh_name = sh_name
+            )
+            //firestore
+            fb_db.collection("shares")
+                .add(share)
+                .addOnCompleteListener {
+                    Log.d(TAG,"성공")
+                    Toast.makeText(this,"업로드 성공!",Toast.LENGTH_SHORT).show()
+                    toShare()
+                }
+                .addOnFailureListener {
+                    Log.e(TAG,"실패!")
+                }
+
+
+        }
+        builder.setPositiveButton("확인", listener)
+        builder.setNegativeButton("취소", null)
+        builder.show()
+    }
+
+    //bitmap to string
+    private fun BitmaptoString(bitmap : Bitmap?) : String {
+        val stream = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        val bytes = stream.toByteArray()
+        return Base64.getEncoder().encodeToString(bytes)
+    }
+
+    //share activity
+    private fun toShare() {
+        val intent = Intent(this,ShareActivity::class.java)
+        startActivity(intent)
+    }
 }
 
 
