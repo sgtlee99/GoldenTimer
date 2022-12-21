@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.share_items.view.*
 
 
 
-class Share_Adapter(val title : String, val menu : String, private val img : Bitmap, private val min : String, val sec : String, val name : String) : Item<GroupieViewHolder>() {
+class Share_Adapter(val title : String, val menu : String,  val img : Bitmap,  val min : String, val sec : String, val name : String) : Item<GroupieViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.share_items
     }

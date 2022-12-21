@@ -1,11 +1,14 @@
 package com.example.goldentimer
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
 import com.example.goldentimer.adapter.Share_Adapter
+import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.database.Timers
 import com.google.firebase.firestore.FirebaseFirestore
 import com.xwray.groupie.GroupAdapter
@@ -14,17 +17,22 @@ import kotlinx.android.synthetic.main.activity_share.*
 
 class ShareActivity : AppCompatActivity() {
 
-    var timersList = mutableListOf<Timers>()
 
-    val TAG : String = "TAG_Share_Activity"
+    val TAG: String = "TAG_Share_Activity"
+
+    var db: AppDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_share)
 
+        //DB초기화 (room)
+        db = AppDatabase.getInstance(this)
+
         val adapter = GroupAdapter<GroupieViewHolder>()
 
-        //데이터 불러오기
+        //DB초기화 (firestore)
         val fb_db = FirebaseFirestore.getInstance()
 
         fb_db.collection("shares")
@@ -39,22 +47,45 @@ class ShareActivity : AppCompatActivity() {
                     val menu = document.get("sh_menu").toString()
                     val image = document.get("sh_image").toString()
 
-                    val imageBytes = Base64.decode(image,0)
-                    val set_image = BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.size)
+                    val imageBytes = Base64.decode(image, 0)
+                    val set_image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
 
                     val min = document.get("sh_min").toString()
                     val sec = document.get("sh_sec").toString()
                     val name = document.get("sh_name").toString()
 
-                    adapter.add(Share_Adapter(title,menu,set_image,min,sec,name))
+                    adapter.add(Share_Adapter(title, menu, set_image, min, sec, name))
                     //제목, 메뉴, 사진, 분, 초, 이름
                 }
                 recyclerview_share.adapter = adapter
             }
             .addOnFailureListener {
 
-                Log.e(TAG,"FireStore 불러오기 실패!")
+                Log.e(TAG, "FireStore 불러오기 실패!")
 
             }
+
+        //터치하면 DB로 전송
+        adapter.setOnItemClickListener { item, view ->
+            var ti = (item as Share_Adapter).title
+            var me = (item as Share_Adapter).menu
+            var im = (item as Share_Adapter).img
+            var mi = (item as Share_Adapter).min
+            var se = (item as Share_Adapter).sec
+            Log.d(TAG, "$ti $me $im $mi $se")
+
+            val download_timer = Timers(
+                ti, me, im, mi, se
+            )
+            db?.timersDao()?.insert(download_timer)
+            Toast.makeText(this,"다운로드 성공!",Toast.LENGTH_SHORT).show()
+            toMain()
+
+        }
+    }
+
+    private fun toMain() {
+        var intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
