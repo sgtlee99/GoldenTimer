@@ -142,7 +142,12 @@
         android:id="@+id/test_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        app:icon="@drawable/timer_icon"
+        app:iconSize="45dp"
+        android:text="시간설정"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -192,6 +197,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+
             android:text="뒤로" />
 
         <Button
@@ -200,6 +207,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+
             android:text="추가" />
     </LinearLayout>
 
