@@ -7,126 +7,179 @@
     android:orientation="vertical"
     tools:context=".TimerActivity">
 
-    <TextView
-        android:id="@+id/timer_get_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="제목"
-        android:textSize="45sp" />
-
-    <ImageView
-        android:id="@+id/timer_get_menuimage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@drawable/default_image" />
-
-    <TextView
-        android:id="@+id/timer_get_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="메뉴"
-        android:textSize="45sp" />
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/timer_count_min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00 : "
-            android:textSize="40sp" />
-
-        <TextView
-            android:id="@+id/timer_count_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textSize="40sp" />
-    </LinearLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-        <Button
-            android:id="@+id/timer_pause"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
+        <TextView
+            android:id="@+id/timer_get_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:layout_weight="1"
-            android:text="정지"
-            app:icon="@drawable/stop_icon"
-            app:iconPadding="4dp"
-            app:iconSize="35dp" />
 
-        <Button
-            android:id="@+id/timer_start"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="시작"
-            app:icon="@drawable/start_icon"
-            app:iconPadding="4dp"
-            app:iconSize="35dp" />
-
-        <Button
-            android:id="@+id/timer_reset"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="리셋"
-            app:icon="@drawable/reset_icon"
-            app:iconPadding="4dp"
-            app:iconSize="25dp" />
-
-
-        <!--        <Button-->
-        <!--            android:id="@+id/timer_pause"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="15dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:text="정지" />-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/timer_start"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="15dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:text="시작" />-->
-
-        <!--        <Button-->
-        <!--            android:id="@+id/timer_reset"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="15dp"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:text="리셋" />-->
+            android:text="제목"
+            android:textSize="40sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.8"
+            android:text=""
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/timer_get_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="메뉴"
+            android:textSize="30sp" />
     </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_weight="0.75"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/timer_get_menuimage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/default_image" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="65dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/timer_count_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:textStyle="bold"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+
+                    android:text=" : "
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/timer_count_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+
+                    android:text="00"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="65dp"
+                />
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/timer_pause"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="정지"
+                    app:icon="@drawable/stop_icon"
+                    app:iconPadding="4dp"
+                    app:iconSize="35dp" />
+
+                <Button
+                    android:id="@+id/timer_start"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="시작"
+                    app:icon="@drawable/start_icon"
+                    app:iconPadding="4dp"
+                    app:iconSize="35dp" />
+
+                <Button
+                    android:id="@+id/timer_reset"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="리셋"
+                    app:icon="@drawable/reset_icon"
+                    app:iconPadding="4dp"
+                    app:iconSize="25dp" />
+
+
+                <!--        <Button-->
+                <!--            android:id="@+id/timer_pause"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:layout_margin="15dp"-->
+                <!--            android:layout_weight="1"-->
+                <!--            android:text="정지" />-->
+
+                <!--        <Button-->
+                <!--            android:id="@+id/timer_start"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:layout_margin="15dp"-->
+                <!--            android:layout_weight="1"-->
+                <!--            android:text="시작" />-->
+
+                <!--        <Button-->
+                <!--            android:id="@+id/timer_reset"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:layout_margin="15dp"-->
+                <!--            android:layout_weight="1"-->
+                <!--            android:text="리셋" />-->
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/name_adding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -17,14 +17,103 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/s_timer_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="00"
-                android:textSize="40sp" />
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_margin="15dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="40sp"
+                        android:text=" "
+                        />
+                    <TextView
+                        android:id="@+id/s_timer_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="00"
+                        android:textSize="45sp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="40sp"
+                        android:text=" "
+                        />
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        app:dividerInsetEnd="15dp"
+                        app:dividerInsetStart="15dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/stopwatch_chipgroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:singleLine="true">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/s_timer_pause"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="정지"
+
+                                app:chipIcon="@drawable/pause_icon"
+                                app:iconEndPadding="5dp"
+                                app:iconStartPadding="5dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/s_timer_start"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="시작"
+                                app:chipIcon="@drawable/start_icon"
+                                app:iconEndPadding="5dp"
+                                app:iconStartPadding="5dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/s_timer_reset"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="리셋"
+                                app:chipIcon="@drawable/reset_icon"
+                                app:iconEndPadding="5dp"
+                                app:iconStartPadding="5dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/s_timer_record"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="기록"
+                                app:chipIcon="@drawable/record_icon"
+                                app:iconEndPadding="5dp"
+                                app:iconStartPadding="5dp" />
+                        </com.google.android.material.chip.ChipGroup>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,66 +121,6 @@
                 android:layout_marginBottom="15dp"
                 app:dividerInsetEnd="15dp"
                 app:dividerInsetStart="15dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/stopwatch_chipgroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    app:singleLine="true">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/s_timer_pause"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="정지"
-                        app:chipIcon="@drawable/pause_icon"
-                        app:iconEndPadding="5dp"
-                        app:iconStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/s_timer_start"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="시작"
-                        app:chipIcon="@drawable/start_icon"
-                        app:iconEndPadding="5dp"
-                        app:iconStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/s_timer_reset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="리셋"
-                        app:chipIcon="@drawable/reset_icon"
-                        app:iconEndPadding="5dp"
-                        app:iconStartPadding="5dp" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/s_timer_record"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="기록"
-                        app:chipIcon="@drawable/record_icon"
-                        app:iconEndPadding="5dp"
-                        app:iconStartPadding="5dp" />
-                </com.google.android.material.chip.ChipGroup>
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    app:dividerInsetEnd="15dp"
-                    app:dividerInsetStart="15dp" />
-            </LinearLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -125,7 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="타이머"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            />
 
 
         <Button
@@ -134,7 +165,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="찾아보기"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            />
     </LinearLayout>
 
 </LinearLayout>

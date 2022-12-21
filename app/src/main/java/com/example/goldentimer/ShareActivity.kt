@@ -42,7 +42,6 @@ class ShareActivity : AppCompatActivity() {
                     Log.d(TAG, document.toString())
                     Log.d(TAG, "FireStore 불러오기 성공!")
 
-
                     val title = document.get("sh_title").toString()
                     val menu = document.get("sh_menu").toString()
                     val image = document.get("sh_image").toString()
@@ -60,9 +59,7 @@ class ShareActivity : AppCompatActivity() {
                 recyclerview_share.adapter = adapter
             }
             .addOnFailureListener {
-
                 Log.e(TAG, "FireStore 불러오기 실패!")
-
             }
 
         //터치하면 DB로 전송

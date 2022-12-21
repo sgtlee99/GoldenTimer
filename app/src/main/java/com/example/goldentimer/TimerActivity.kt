@@ -1,6 +1,5 @@
 package com.example.goldentimer
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
@@ -9,29 +8,15 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.view.WindowManager
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.goldentimer.database.AppDatabase
 import com.example.goldentimer.model.Share
-import com.example.goldentimer.model.User
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import io.reactivex.Completable.timer
-import kotlinx.android.synthetic.main.activity_join.*
 import kotlinx.android.synthetic.main.activity_timer.*
-import kotlinx.android.synthetic.main.sharedialog_edittext.*
-import kotlinx.android.synthetic.main.sharedialog_edittext.view.*
 import java.io.ByteArrayOutputStream
 import java.util.*
-import kotlin.concurrent.timer
-import kotlin.concurrent.timerTask
 
 class TimerActivity : AppCompatActivity() {
     //TAG
@@ -68,7 +53,7 @@ class TimerActivity : AppCompatActivity() {
             "${set_timer.t_title} ${set_timer.t_menu} ${set_timer.t_img} ${set_timer.t_min} ${set_timer.t_sec}"
         )
 
-        //이름추가 버튼
+        //이름추가, 공유 버튼
         name_adding.setOnClickListener {
             Log.d(TAG, "Share Button Click!")
 
@@ -93,6 +78,13 @@ class TimerActivity : AppCompatActivity() {
         timer_get_title.text = set_timer.t_title
         timer_get_menu.text = set_timer.t_menu
         timer_get_menuimage.setImageBitmap(set_timer.t_img)
+
+        //최초 시간띄우기
+        timer_count_min.text = set_timer.t_min
+        timer_count_sec.text = set_timer.t_sec
+
+//        timer_count_min.text = "%02d".format(set_timer.t_min)
+//        timer_count_sec.text = set_timer.t_sec
 
         //타이머 코드
         timer_start.setOnClickListener {
@@ -159,7 +151,7 @@ class TimerActivity : AppCompatActivity() {
         val remainSeconds = remainMillis / 1000
 
         // 분만 보여줌, 초만 보여줌
-        timer_count_min.text = "%02d:".format(remainSeconds / 60)
+        timer_count_min.text = "%02d".format(remainSeconds / 60)
         timer_count_sec.text = "%02d".format(remainSeconds % 60)
 
     }
