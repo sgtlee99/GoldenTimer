@@ -54,6 +54,7 @@ class StopwatchActivity : AppCompatActivity() {
         }
         s_btn_more.setOnClickListener {
             //더보기 -> firebase 연동
+            toMore()
         }
 
     }
@@ -79,10 +80,15 @@ class StopwatchActivity : AppCompatActivity() {
         time = 0
         s_timer_count.text = "00 : 00"
     }
-
+    //메인페이지
     private fun toMain() {
         var intent = Intent(this, MainActivity::class.java)
         finish()
+        startActivity(intent)
+    }
+    //찾아보기
+    private fun toMore() {
+        var intent = Intent(this, ShareActivity::class.java)
         startActivity(intent)
     }
 }

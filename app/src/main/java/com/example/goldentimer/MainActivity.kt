@@ -26,9 +26,7 @@ class MainActivity : AppCompatActivity() {
     var db: AppDatabase? = null
 
     var timersList = mutableListOf<Timers>()
-
-    //swipe test
-//    var helper: ItemTouchHelper? = null
+    //swipe
     private val p: Paint = Paint()
 
 
@@ -183,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //둘러보기
+    //찾아보기
     private fun toMore() {
 //        var intent = Intent(this, LoginActivity::class.java)
 //        startActivity(intent)
