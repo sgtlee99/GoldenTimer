@@ -53,9 +53,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:drawableTop="@drawable/ic_baseline_alarm_24"
                 android:text="Timer"
-                android:textColor="@color/theme_color_blue"
-                android:textSize="25dp" />
+                android:textColor="@color/theme_color_blue" />
 
             <Button
                 android:id="@+id/sh_btn_stopwatch"
@@ -66,9 +66,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:drawableTop="@drawable/ic_baseline_timer_24"
                 android:text="StopWatch"
-                android:textColor="@color/theme_color_blue"
-                android:textSize="25dp" />
+                android:textColor="@color/theme_color_blue" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

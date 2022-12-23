@@ -52,7 +52,7 @@ class StopwatchActivity : AppCompatActivity() {
             Log.d(TAG, "Stopwatch -> Main | Button | Clicked!")
             toMain()
         }
-        s_btn_more.setOnClickListener {
+        s_btn_share.setOnClickListener {
             //더보기 -> firebase 연동
             toMore()
         }
