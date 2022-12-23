@@ -4,38 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareActivity"
     android:background="@color/theme_color_blue"
+    android:orientation="vertical"
 
-    android:orientation="vertical">
+    tools:context=".ShareActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="가져오고 싶은 타이머를 클릭하세요!"
         android:gravity="center"
-        android:textSize="25dp"/>
+        android:text="가져오고 싶은 타이머를 클릭하세요!"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:layout_marginTop="15dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:id="@+id/recyclerview_share"
-        />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"></LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparent"
         android:background="@drawable/bottom_cardview_style"
-        app:cardElevation="0dp"
-        >
-
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="0dp">
 
 
         <LinearLayout
@@ -46,7 +46,7 @@
 
             <Button
                 android:id="@+id/sh_btn_timerlist"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -54,18 +54,20 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="Timer"
+                android:textColor="@color/theme_color_blue"
                 android:textSize="25dp" />
 
             <Button
                 android:id="@+id/sh_btn_stopwatch"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Share"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="StopWatch"
+                android:textColor="@color/theme_color_blue"
                 android:textSize="25dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

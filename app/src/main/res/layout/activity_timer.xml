@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/theme_color_blue"
     tools:context=".TimerActivity">
 
     <LinearLayout
@@ -191,4 +192,47 @@
         app:srcCompat="@drawable/share_icon"
 
         />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        android:background="@drawable/bottom_cardview_style"
+        app:cardElevation="0dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cardview_style"
+            android:orientation="horizontal">
+
+            <Button
+                android:textColor="@color/theme_color_blue"
+
+                android:id="@+id/t_btn_timerlist"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="Timer"
+                android:textSize="25dp" />
+
+            <Button
+                android:textColor="@color/theme_color_blue"
+                android:id="@+id/t_btn_stopwatch"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="StopWatch"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:textSize="25dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

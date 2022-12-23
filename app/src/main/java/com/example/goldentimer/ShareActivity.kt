@@ -79,10 +79,23 @@ class ShareActivity : AppCompatActivity() {
             toMain()
 
         }
+
+        sh_btn_timerlist.setOnClickListener {
+            toMain()
+        }
+        sh_btn_stopwatch.setOnClickListener {
+            toStopwatch()
+        }
     }
 
     private fun toMain() {
         var intent = Intent(this, MainActivity::class.java)
+        finish()
+        startActivity(intent)
+    }
+    private fun toStopwatch() {
+        var intent = Intent(this, StopwatchActivity::class.java)
+        finish()
         startActivity(intent)
     }
 }

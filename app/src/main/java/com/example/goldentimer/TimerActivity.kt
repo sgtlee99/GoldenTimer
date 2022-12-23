@@ -105,6 +105,12 @@ class TimerActivity : AppCompatActivity() {
         }
 
 
+        t_btn_stopwatch.setOnClickListener {
+            toStopwatch()
+        }
+        t_btn_timerlist.setOnClickListener {
+            toMain()
+        }
     }
 
     private fun convertTime(min: String, sec: String): Long {
@@ -228,6 +234,16 @@ class TimerActivity : AppCompatActivity() {
     //share activity
     private fun toShare() {
         val intent = Intent(this,ShareActivity::class.java)
+        startActivity(intent)
+    }
+    private fun toMain() {
+        val intent = Intent(this,MainActivity::class.java)
+        finish()
+        startActivity(intent)
+    }
+    private fun toStopwatch() {
+        val intent = Intent(this,StopwatchActivity::class.java)
+        finish()
         startActivity(intent)
     }
 }

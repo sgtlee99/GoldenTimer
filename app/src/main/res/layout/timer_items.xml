@@ -12,7 +12,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/rect_shadow_thick">
+        app:cardCornerRadius="15dp"
+        app:contentPadding="5dp"
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"

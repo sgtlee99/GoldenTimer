@@ -62,8 +62,10 @@
             android:orientation="horizontal">
 
             <Button
+                android:textColor="@color/theme_color_blue"
+
                 android:id="@+id/btn_stopwatch"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -74,8 +76,10 @@
                 android:textSize="25dp" />
 
             <Button
+                android:textColor="@color/theme_color_blue"
+
                 android:id="@+id/btn_more"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

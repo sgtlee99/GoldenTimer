@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme_color_blue"
     android:orientation="vertical"
-    tools:context=".StopwatchActivity"
-    android:background="@color/theme_color_blue">
+    tools:context=".StopwatchActivity">
 
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:backgroundTint="@color/transparent"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="@color/transparent"
         app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bottom_cardview_style">
+            android:background="@drawable/bottom_cardview_style"
+            android:orientation="vertical">
 
 
             <com.google.android.material.card.MaterialCardView
@@ -140,6 +140,7 @@ android:backgroundTint="@color/transparent"
                     android:layout_marginRight="15dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </ScrollView>
+
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,10 +164,9 @@ android:backgroundTint="@color/transparent"
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparent"
         android:background="@drawable/bottom_cardview_style"
-        app:cardElevation="0dp"
-        >
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,7 +176,6 @@ android:backgroundTint="@color/transparent"
 
             <Button
                 android:id="@+id/s_btn_timerlist"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -184,18 +183,21 @@ android:backgroundTint="@color/transparent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="Timer"
+                android:textColor="@color/theme_color_blue"
+                style="?android:attr/borderlessButtonStyle"
                 android:textSize="25dp" />
 
             <Button
                 android:id="@+id/s_btn_more"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Share"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="Share"
+                android:textColor="@color/theme_color_blue"
+                style="?android:attr/borderlessButtonStyle"
                 android:textSize="25dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
