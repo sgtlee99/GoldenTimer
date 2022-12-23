@@ -113,13 +113,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/t_play_stop_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_play_arrow_24"
-                    android:backgroundTint="@color/theme_color_blue"
-                    android:background="@drawable/button_state_blue"
+                    android:background="@drawable/button_color_drawable"
                     android:layout_weight="1"
                     android:layout_margin="5dp"/>
 

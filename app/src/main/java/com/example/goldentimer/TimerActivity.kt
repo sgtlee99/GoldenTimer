@@ -36,6 +36,8 @@ class TimerActivity : AppCompatActivity() {
 
     var button_state : Boolean = true
 
+    //
+
     @SuppressLint( "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,6 +111,7 @@ class TimerActivity : AppCompatActivity() {
         }
 
 
+        //화면 이동 버튼
         t_btn_stopwatch.setOnClickListener {
             toStopwatch()
         }
@@ -117,16 +120,21 @@ class TimerActivity : AppCompatActivity() {
         }
 
         t_play_stop_btn.setOnClickListener {
-            if (button_state==true) {
+            if (button_state==true) {   ///a.k.a 최초상태
+                //버튼이 play 상태일때 -> 파랑
                 t_play_stop_btn.setImageResource(R.drawable.ic_baseline_stop_24)
-//                t_play_stop_btn.setBackgroundColor(R.color.bright_red)
                 t_play_stop_btn.setBackgroundResource(R.drawable.button_state_red)
+                //타이머
+
+                //button state
                 button_state=false
             } else {
+                //버튼이 stop 상태일때 -> 빨강
                 t_play_stop_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-//                t_play_stop_btn.setBackgroundColor(R.color.theme_color_blue)
                 t_play_stop_btn.setBackgroundResource(R.drawable.button_state_blue)
+                //타이머
 
+                //button state
                 button_state=true
             }
         }
