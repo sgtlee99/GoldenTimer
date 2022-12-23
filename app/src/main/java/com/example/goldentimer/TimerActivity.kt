@@ -1,5 +1,6 @@
 package com.example.goldentimer
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
@@ -9,6 +10,7 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.goldentimer.database.AppDatabase
@@ -29,10 +31,12 @@ class TimerActivity : AppCompatActivity() {
     private var currentCountDownTimer: CountDownTimer? = null
     //밀리초
 
-
     //파이어베이스
     val fb_db = FirebaseFirestore.getInstance()
 
+    var button_state : Boolean = true
+
+    @SuppressLint( "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
@@ -111,6 +115,22 @@ class TimerActivity : AppCompatActivity() {
         t_btn_timerlist.setOnClickListener {
             toMain()
         }
+
+        t_play_stop_btn.setOnClickListener {
+            if (button_state==true) {
+                t_play_stop_btn.setImageResource(R.drawable.ic_baseline_stop_24)
+//                t_play_stop_btn.setBackgroundColor(R.color.bright_red)
+                t_play_stop_btn.setBackgroundResource(R.drawable.button_state_red)
+                button_state=false
+            } else {
+                t_play_stop_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+//                t_play_stop_btn.setBackgroundColor(R.color.theme_color_blue)
+                t_play_stop_btn.setBackgroundResource(R.drawable.button_state_blue)
+
+                button_state=true
+            }
+        }
+
     }
 
     private fun convertTime(min: String, sec: String): Long {
