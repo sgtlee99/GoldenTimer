@@ -15,7 +15,8 @@
         android:background="@drawable/menu_list_draw"
         android:gravity="center"
         android:text="TAG"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:textSize="15sp"
          />
 

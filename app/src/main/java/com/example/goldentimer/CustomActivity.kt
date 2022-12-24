@@ -52,14 +52,13 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         //아래의 메뉴 리스트의 아이템들이 변경된다
         //설정이 완료되면 내부 DB에 저장된다
 
-//        noodle.setOnClickListener(this)
-//        fry.setOnClickListener(this)
-//        bake.setOnClickListener(this)
-//        boil.setOnClickListener(this)
 
-        recyclerview_menu.adapter = adapter
-
-//        val tablayout = tab_layout
+        //tab 최초상태
+        adapter.add(Menu_Adapter("라면"))
+        adapter.add(Menu_Adapter("소면"))
+        adapter.add(Menu_Adapter("중면"))
+        adapter.add(Menu_Adapter("우동"))
+        adapter.add(Menu_Adapter("파스타"))
 
         tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -86,6 +85,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
                         adapter.add(Menu_Adapter("반숙"))
                     }
                     else -> {
+                        adapter.clear()
                         adapter.add(Menu_Adapter("라면"))
                         adapter.add(Menu_Adapter("소면"))
                         adapter.add(Menu_Adapter("중면"))
@@ -104,6 +104,7 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         })
+        recyclerview_menu.adapter = adapter
 
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->

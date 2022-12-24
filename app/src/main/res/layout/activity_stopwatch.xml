@@ -8,148 +8,154 @@
     android:orientation="vertical"
     tools:context=".StopwatchActivity">
 
-
-    <com.google.android.material.card.MaterialCardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:backgroundTint="@color/transparent"
-        app:cardElevation="0dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bottom_cardview_style"
-            android:orientation="vertical">
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/transparent"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp">
 
-
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_margin="15dp">
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_cardview_style"
+                android:orientation="vertical">
 
-                <LinearLayout
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=" "
-                        android:textSize="40sp" />
-
-                    <TextView
-                        android:id="@+id/s_timer_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="00"
-                        android:textSize="45sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=" "
-                        android:textSize="40sp" />
-
-                    <com.google.android.material.divider.MaterialDivider
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="15dp"
-                        app:dividerInsetEnd="15dp"
-                        app:dividerInsetStart="15dp" />
+                    android:layout_height="350dp"
+                    android:layout_margin="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="center_horizontal"
                         android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=" "
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/s_timer_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="00"
+                            android:textSize="45sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=" "
+                            android:textSize="40sp" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="15dp"
+                            app:dividerInsetEnd="15dp"
+                            app:dividerInsetStart="15dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
+                            android:layout_gravity="bottom"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
-                            <Button
-                                android:id="@+id/s_timer_start"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Start"
-                                app:icon="@drawable/start_icon" />
+                                android:orientation="horizontal"
+                                android:padding="10dp">
 
-                            <Button
-                                android:id="@+id/s_timer_pause"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/pause_icon"
-                                android:text="Pause" />
+                                <Button
+                                    android:id="@+id/s_timer_start"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:text="Start"
+                                    app:icon="@drawable/start_icon" />
 
-                            <Button
-                                android:id="@+id/s_timer_record"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/record_icon"
-                                android:text="Record" />
+                                <Button
+                                    android:id="@+id/s_timer_pause"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:drawableLeft="@drawable/pause_icon"
+                                    android:text="Pause" />
 
-                            <Button
-                                android:id="@+id/s_timer_reset"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Reset"
-                                app:icon="@drawable/reset_icon" />
+                                <Button
+                                    android:id="@+id/s_timer_record"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:drawableLeft="@drawable/record_icon"
+                                    android:text="Record" />
 
+                                <Button
+                                    android:id="@+id/s_timer_reset"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:layout_weight="1"
+                                    android:text="Reset"
+                                    app:icon="@drawable/reset_icon" />
+
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                app:dividerInsetEnd="15dp"
-                app:dividerInsetStart="15dp" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="185dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/record_list"
+                <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-            </ScrollView>
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:dividerInsetEnd="15dp"
+                    app:dividerInsetStart="15dp" />
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:dividerInsetEnd="15dp"
-                app:dividerInsetStart="15dp" />
-        </LinearLayout>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp">
 
-    </com.google.android.material.card.MaterialCardView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/record_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </ScrollView>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    app:dividerInsetEnd="15dp"
+                    app:dividerInsetStart="15dp" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
