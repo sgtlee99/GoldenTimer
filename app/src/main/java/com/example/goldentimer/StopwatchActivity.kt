@@ -28,25 +28,46 @@ class StopwatchActivity : AppCompatActivity() {
     var generated_num: Int = 0
     var rec: String = ""
 
+    //
+    private var button_state : Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stopwatch)
 
         //레코드
         record_list.adapter = adapter
-        //타이머 시작, 정지, 리셋 버튼
-        s_timer_start.setOnClickListener { startTimer() }
-        s_timer_pause.setOnClickListener { pauseTimer() }
+        //스톱워치 시작|정지, 리셋 버튼
+
         s_timer_reset.setOnClickListener {
             resetTimer()
+            //버튼 원래 색을 되돌림
+            s_play_stop_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            s_play_stop_btn.setBackgroundResource(R.drawable.button_state_blue)
             adapter.clear()
         }
         s_timer_record.setOnClickListener {
             rec = s_timer_count.text.toString()
             adapter.add(Record_Adapter(++generated_num, rec))
         }
+        //play | stop switch button
+        s_play_stop_btn.setOnClickListener {
+            if (button_state==true) {
+                s_play_stop_btn.setImageResource(R.drawable.ic_baseline_stop_24)
+                s_play_stop_btn.setBackgroundResource(R.drawable.button_state_red)
+                //stopwatch start
+                startTimer()    //시작
+                button_state=false
+            } else {
+                s_play_stop_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+                s_play_stop_btn.setBackgroundResource(R.drawable.button_state_blue)
+                //stopwatch pause
+                pauseTimer()    //정지
+                button_state=true
+            }
+        }
 
-
+        //하단버튼
         s_btn_timerlist.setOnClickListener {
             //메인으로 이동
             Log.d(TAG, "Stopwatch -> Main | Button | Clicked!")

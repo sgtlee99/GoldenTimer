@@ -34,7 +34,7 @@ class TimerActivity : AppCompatActivity() {
     //파이어베이스
     val fb_db = FirebaseFirestore.getInstance()
 
-    var button_state : Boolean = true
+    private var button_state : Boolean = true
 
     //
 

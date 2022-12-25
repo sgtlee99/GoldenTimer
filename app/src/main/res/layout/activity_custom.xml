@@ -41,7 +41,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                app:hintTextColor="@color/theme_color_blue"
+                app:boxCornerRadiusTopStart="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxStrokeColor="@color/theme_color_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/alarm_title"
@@ -77,6 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                app:tabSelectedTextColor="@color/theme_color_blue"
+                app:tabIndicatorColor="@color/theme_color_blue"
                 >
 
                 <com.google.android.material.tabs.TabItem
@@ -177,13 +183,14 @@
 
             <Button
                 android:id="@+id/test_button"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="시간설정"
-                app:icon="@drawable/timer_icon"
-                app:iconSize="45dp" />
+                android:textColor="@color/theme_color_blue"
+                android:textStyle="bold"
+                android:drawableTop="@drawable/ic_baseline_timer_24"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -198,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="MIN"
+                    android:layout_marginBottom="10dp"
                     android:textSize="25sp" />
 
                 <TextView
@@ -205,15 +213,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text=" : "
-
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:layout_marginBottom="10dp"
+                    />
 
                 <TextView
                     android:id="@+id/time_set_sec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SEC"
-
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
                     android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>

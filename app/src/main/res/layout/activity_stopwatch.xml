@@ -32,7 +32,7 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="300dp"
                     android:layout_margin="15dp">
 
                     <LinearLayout
@@ -84,41 +84,33 @@
                                 android:orientation="horizontal"
                                 android:padding="10dp">
 
-                                <Button
-                                    android:id="@+id/s_timer_start"
+                                <androidx.appcompat.widget.AppCompatImageButton
+                                    android:id="@+id/s_play_stop_btn"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
+                                    android:layout_margin="5dp"
                                     android:layout_weight="1"
-                                    android:text="Start"
-                                    app:icon="@drawable/start_icon" />
+                                    android:background="@drawable/button_color_drawable"
+                                    android:src="@drawable/ic_baseline_play_arrow_24" />
 
-                                <Button
-                                    android:id="@+id/s_timer_pause"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:layout_weight="1"
-                                    android:drawableLeft="@drawable/pause_icon"
-                                    android:text="Pause" />
 
-                                <Button
+                                <androidx.appcompat.widget.AppCompatImageButton
                                     android:id="@+id/s_timer_record"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
+                                    android:layout_margin="5dp"
                                     android:layout_weight="1"
-                                    android:drawableLeft="@drawable/record_icon"
-                                    android:text="Record" />
+                                    android:background="@drawable/button_reset_draw"
+                                    android:src="@drawable/ic_baseline_checklist_24" />
 
-                                <Button
+                                <androidx.appcompat.widget.AppCompatImageButton
                                     android:id="@+id/s_timer_reset"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
+                                    android:layout_margin="5dp"
                                     android:layout_weight="1"
-                                    android:text="Reset"
-                                    app:icon="@drawable/reset_icon" />
+                                    android:background="@drawable/button_reset_draw"
+                                    android:src="@drawable/ic_baseline_refresh_24" />
 
                             </LinearLayout>
                         </LinearLayout>
