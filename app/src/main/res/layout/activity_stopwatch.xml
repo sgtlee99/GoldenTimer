@@ -195,7 +195,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_share_24"
+                android:drawableTop="@drawable/ic_baseline_share_24_bottom"
                 android:text="Share"
                 android:textColor="@color/theme_color_blue" />
         </LinearLayout>

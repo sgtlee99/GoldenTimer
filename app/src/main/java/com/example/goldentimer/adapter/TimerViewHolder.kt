@@ -3,6 +3,7 @@ package com.example.goldentimer.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goldentimer.database.Timers
+import kotlinx.android.synthetic.main.activity_timer.*
 import kotlinx.android.synthetic.main.timer_items.view.*
 
 class TimerViewHolder(v : View) : RecyclerView.ViewHolder(v) {
@@ -12,8 +13,7 @@ class TimerViewHolder(v : View) : RecyclerView.ViewHolder(v) {
         view.title.text = item.t_title
         view.menu.text = item.t_menu
         view.menu_img.setImageBitmap(item.t_img)
-        view.time_view_min.text = item.t_min.toString()
-        view.time_view_sec.text = item.t_sec.toString()
-
+        view.time_view_min.text = "%02d".format(item.t_min.toInt())
+        view.time_view_sec.text = "%02d".format(item.t_sec.toInt())
     }
 }
