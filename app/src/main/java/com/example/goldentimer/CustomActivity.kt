@@ -24,6 +24,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_timer.*
 import kotlinx.android.synthetic.main.numberpicker_themes.*
 import java.util.*
 //
@@ -190,8 +191,9 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         start.setOnClickListener {
             Toast.makeText(this, "${minute.value}분 ${second.value}초", Toast.LENGTH_SHORT).show()
 //            tv1.text = "${minute.value}분 ${second.value}초"
-            time_set_min.text = "${minute.value}"
-            time_set_sec.text = "${second.value}"
+            time_set_min.text = "%02d".format(minute.value)
+            time_set_sec.text = "%02d".format(second.value)
+
             dialog.dismiss()
         }
 
@@ -209,21 +211,6 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         return bitmap
     }
 
-    fun ReConfirmDialog() {     //설정한 데이터가 맞는지 재확인하는 dialog
-        val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("입력하신 정보가 맞나요?")
-        dialog.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
-
-            //mainactivity로 이동
-            val intent = Intent(this, MainActivity::class.java)
-            //전 액티비티 지워줌
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            //토스트 메시지
-            Toast.makeText(this, "타이머가 저장되었습니다", Toast.LENGTH_SHORT).show()
-        })
-        dialog.show()
-    }
 
     //왜 오버라이드 구현해야겠는지는 모르겠음
     override fun onClick(p0: View?) {

@@ -34,11 +34,9 @@ class TimerActivity : AppCompatActivity() {
     //파이어베이스
     val fb_db = FirebaseFirestore.getInstance()
 
-    private var button_state : Boolean = true
+    private var button_state: Boolean = true
 
-    //
-
-    @SuppressLint( "ResourceAsColor")
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
@@ -74,11 +72,13 @@ class TimerActivity : AppCompatActivity() {
 
 
         //타이머 시작, 정지, 리셋 버튼
-//        timer_start.setOnClickListener { startTimer() }
-//        timer_pause.setOnClickListener { pauseTimer() }
-//        timer_reset.setOnClickListener { resetTimer() }
+        timer_reset.setOnClickListener {
+            //최초 상태로 textview 변경
+            timer_count_min.text = "%02d".format(set_timer.t_min.toInt())
+            timer_count_sec.text = "%02d".format(set_timer.t_sec.toInt())
+        }
 
-//        convertTime(set_timer.t_min, set_timer.t_sec)
+
 
         //제목, 메뉴, 이미지 받기
         timer_get_title.text = set_timer.t_title
@@ -86,59 +86,37 @@ class TimerActivity : AppCompatActivity() {
         timer_get_menuimage.setImageBitmap(set_timer.t_img)
 
         //최초 시간띄우기
-        timer_count_min.text = set_timer.t_min
-        timer_count_sec.text = set_timer.t_sec
+        timer_count_min.text = "%02d".format(set_timer.t_min.toInt())
+        timer_count_sec.text = "%02d".format(set_timer.t_sec.toInt())
 
-//        timer_count_min.text = "%02d".format(set_timer.t_min)
-//        timer_count_sec.text = set_timer.t_sec
 
         //타이머 코드
-        timer_start.setOnClickListener {
-            startCountDown(
-                convertTime(
-                    set_timer.t_min,
-                    set_timer.t_sec
-                )
-            )
-        }
-        timer_pause.setOnClickListener {
-            stopCountDown(
-                convertTime(
-                    set_timer.t_min,
-                    set_timer.t_sec
-                )
-            )
-        }
-
-
-        //화면 이동 버튼
-        t_btn_stopwatch.setOnClickListener {
-            toStopwatch()
-        }
-        t_btn_timerlist.setOnClickListener {
-            toMain()
-        }
-
         t_play_stop_btn.setOnClickListener {
-            if (button_state==true) {   ///a.k.a 최초상태
+            if (button_state == true) {   ///a.k.a 최초상태
                 //버튼이 play 상태일때 -> 파랑
                 t_play_stop_btn.setImageResource(R.drawable.ic_baseline_stop_24)
                 t_play_stop_btn.setBackgroundResource(R.drawable.button_state_red)
                 //타이머
-
+                startCountDown(
+                    convertTime(
+                        set_timer.t_min,
+                        set_timer.t_sec
+                    )
+                )
                 //button state
-                button_state=false
+                button_state = false
             } else {
                 //버튼이 stop 상태일때 -> 빨강
                 t_play_stop_btn.setImageResource(R.drawable.ic_baseline_play_arrow_24)
                 t_play_stop_btn.setBackgroundResource(R.drawable.button_state_blue)
                 //타이머
-
-                //button state
-                button_state=true
+                stopCountDown()
             }
         }
 
+        //화면 이동 버튼
+        t_btn_stopwatch.setOnClickListener { toStopwatch() }
+        t_btn_timerlist.setOnClickListener { toMain() }
     }
 
     private fun convertTime(min: String, sec: String): Long {
@@ -183,7 +161,6 @@ class TimerActivity : AppCompatActivity() {
     private fun updateRemainTime(remainMillis: Long) {
         // 총 남은 초
         val remainSeconds = remainMillis / 1000
-
         // 분만 보여줌, 초만 보여줌
         timer_count_min.text = "%02d".format(remainSeconds / 60)
         timer_count_sec.text = "%02d".format(remainSeconds % 60)
@@ -191,8 +168,12 @@ class TimerActivity : AppCompatActivity() {
     }
 
     //카운트 다운 멈춤
-    private fun stopCountDown(millitime: Long) {
-        currentCountDownTimer = createCountDownTimer(millitime)
+    private fun stopCountDown() {
+//        private fun stopCountDown(millitime: Long) {
+
+//        currentCountDownTimer = createCountDownTimer(millitime)
+//        currentCountDownTimer = null
+        currentCountDownTimer?.cancel()
         currentCountDownTimer = null
     }
 
@@ -200,9 +181,7 @@ class TimerActivity : AppCompatActivity() {
     private fun startCountDown(millitime: Long) {
         currentCountDownTimer = createCountDownTimer(millitime)
         currentCountDownTimer?.start()
-
         //사운드
-
     }
 
 
@@ -222,7 +201,7 @@ class TimerActivity : AppCompatActivity() {
             Log.d(TAG, "$title $menu $image $min $sec")
             Log.d(TAG, "${sh_name}")
 
-            var imageurl : String = BitmaptoString(image)
+            var imageurl: String = BitmaptoString(image)
 
             val share = Share(
                 sh_title = title,
@@ -236,12 +215,12 @@ class TimerActivity : AppCompatActivity() {
             fb_db.collection("shares")
                 .add(share)
                 .addOnCompleteListener {
-                    Log.d(TAG,"성공")
-                    Toast.makeText(this,"업로드 성공!",Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "성공")
+                    Toast.makeText(this, "업로드 성공!", Toast.LENGTH_SHORT).show()
                     toShare()
                 }
                 .addOnFailureListener {
-                    Log.e(TAG,"실패!")
+                    Log.e(TAG, "실패!")
                 }
 
 
@@ -252,25 +231,28 @@ class TimerActivity : AppCompatActivity() {
     }
 
     //bitmap to string
-    private fun BitmaptoString(bitmap : Bitmap?) : String {
+    private fun BitmaptoString(bitmap: Bitmap?): String {
         val stream = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream)
         val bytes = stream.toByteArray()
         return Base64.getEncoder().encodeToString(bytes)
     }
 
+    //하단 액티비티 이동
     //share activity
     private fun toShare() {
-        val intent = Intent(this,ShareActivity::class.java)
+        val intent = Intent(this, ShareActivity::class.java)
         startActivity(intent)
     }
+
     private fun toMain() {
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         finish()
         startActivity(intent)
     }
+
     private fun toStopwatch() {
-        val intent = Intent(this,StopwatchActivity::class.java)
+        val intent = Intent(this, StopwatchActivity::class.java)
         finish()
         startActivity(intent)
     }

@@ -91,7 +91,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
-                android:drawableTop="@drawable/ic_baseline_share_24"
+                android:drawableTop="@drawable/ic_baseline_share_24_bottom"
                 android:text="share"
                 />
         </LinearLayout>

@@ -131,51 +131,35 @@
                     android:src="@drawable/ic_baseline_play_arrow_24"
                     android:background="@drawable/button_color_drawable"
                     android:layout_weight="1"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"/>
 
+                <androidx.appcompat.widget.AppCompatImageButton
 
-                <Button
-                    android:id="@+id/timer_pause"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="정지"
-                    app:iconPadding="4dp"
-                    app:iconSize="35dp" />
-
-                <Button
-                    android:id="@+id/timer_start"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="시작"
-                    app:iconPadding="4dp"
-                    app:iconSize="35dp" />
-
-                <Button
                     android:id="@+id/timer_reset"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="리셋"
-                    app:iconPadding="4dp"
-                    app:iconSize="25dp" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/name_adding"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|right"
-                    android:layout_margin="16dp"
-                    android:backgroundTint="@color/bright_gray"
-                    android:contentDescription="test"
-                    app:borderWidth="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_reset_draw"
+                    android:src="@drawable/ic_baseline_refresh_24"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/name_adding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_share_24"
+                    android:background="@drawable/button_state_blue"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     />
 
                 <!--        <Button-->
