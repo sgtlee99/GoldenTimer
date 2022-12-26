@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.activity_share.*
 
 class ShareActivity : AppCompatActivity() {
 
-
+    //tag
     val TAG: String = "TAG_Share_Activity"
-
+    //room db
     var db: AppDatabase? = null
 
 
