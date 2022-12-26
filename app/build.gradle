@@ -18,7 +18,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.goldentimer"
+        applicationId "com.sjdev0809.goldentimer"
         minSdk 28
         targetSdk 32
         versionCode 1

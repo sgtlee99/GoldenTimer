@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.goldentimer">
+    package="com.sjdev0809.goldentimer">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoldenTimer">
         <activity
-            android:name=".ShareActivity"
+            android:name="com.sjdev0809.goldentimer.ShareActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -18,20 +18,20 @@
         </activity>
 
         <activity
-            android:name=".StopwatchActivity"
+            android:name="com.sjdev0809.goldentimer.StopwatchActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TimerActivity"
+            android:name="com.sjdev0809.goldentimer.TimerActivity"
             android:exported="true" />
         <activity
-            android:name=".CustomActivity"
+            android:name="com.sjdev0809.goldentimer.CustomActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.sjdev0809.goldentimer.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
