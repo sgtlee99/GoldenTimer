@@ -187,10 +187,14 @@ class CustomActivity : AppCompatActivity(), View.OnClickListener {
         }
         start.setOnClickListener {
             Toast.makeText(this, "${minute.value}분 ${second.value}초", Toast.LENGTH_SHORT).show()
-//            tv1.text = "${minute.value}분 ${second.value}초"
+            if (minute.value == null) {
+                minute.value = 1
+            }
+            if (second.value == null) {
+                second.value = 0
+            }
             time_set_min.text = "%02d".format(minute.value)
             time_set_sec.text = "%02d".format(second.value)
-
             dialog.dismiss()
         }
 
