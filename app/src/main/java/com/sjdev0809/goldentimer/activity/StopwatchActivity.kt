@@ -1,19 +1,18 @@
-package com.sjdev0809.goldentimer
+package com.sjdev0809.goldentimer.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.sjdev0809.goldentimer.R
 import com.sjdev0809.goldentimer.adapter.Record_Adapter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_stopwatch.*
-import kotlinx.android.synthetic.main.activity_timer.*
 import java.util.*
 import kotlin.concurrent.timer
 
-class StopwatchActivity : AppCompatActivity() {
+class StopwatchActivity : BaseActivity() {
     //TAG
     private val TAG = "TAG_Stopwatch_Activity"
 

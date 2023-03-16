@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoldenTimer">
         <activity
-            android:name="com.sjdev0809.goldentimer.ShareActivity"
+            android:name="com.sjdev0809.goldentimer.activity.ShareActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -18,20 +18,20 @@
         </activity>
 
         <activity
-            android:name="com.sjdev0809.goldentimer.StopwatchActivity"
+            android:name="com.sjdev0809.goldentimer.activity.StopwatchActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.sjdev0809.goldentimer.TimerActivity"
+            android:name="com.sjdev0809.goldentimer.activity.TimerActivity"
             android:exported="true" />
         <activity
-            android:name="com.sjdev0809.goldentimer.CustomActivity"
+            android:name="com.sjdev0809.goldentimer.activity.CustomActivity"
             android:exported="true" />
         <activity
-            android:name="com.sjdev0809.goldentimer.MainActivity"
+            android:name="com.sjdev0809.goldentimer.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

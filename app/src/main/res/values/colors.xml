@@ -1,24 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="purple_200">#FFBB86FC</color>
-	<color name="purple_500">#FF6200EE</color>
-	<color name="purple_700">#FF3700B3</color>
-	<color name="teal_200">#FF03DAC5</color>
-	<color name="teal_700">#FF018786</color>
-	<color name="black">#FF000000</color>
-	<color name="white">#FFFFFFFF</color>
-	<color name="bright_red">#FF473D</color>
-	<color name="orange">#FF8C00</color>
-	<color name="bright_blue">#0074CD</color>
-	<!--blue 색 변경해주기-->
-	<color name="blue">#0074CD</color>
-	<color name="bright_green">#02AD58</color>
-	<color name="yellow">#FDDE45</color>
-	<color name="dark_yellow">#c68a12</color>
-	<color name="dark_red">#930000</color>
-	<color name="transparent">#00ff0000</color>
-	<color name="bright_gray">#E5E5E5</color>
-	<color name="gray">#757575</color>
-<!--	테마-->
-	<color name="theme_color_blue">#4B6EFE</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bright_red">#FF473D</color>
+    <color name="orange">#FF8C00</color>
+    <color name="bright_blue">#0074CD</color>
+    <!--blue 색 변경해주기-->
+    <color name="blue">#0074CD</color>
+    <color name="bright_green">#02AD58</color>
+    <color name="yellow">#FDDE45</color>
+    <color name="dark_yellow">#c68a12</color>
+    <color name="dark_red">#930000</color>
+
+    <color name="bright_gray">#E5E5E5</color>
+    <color name="gray">#757575</color>
+    <!--	테마-->
+    <color name="theme_color_blue">#4B6EFE</color>
+
+
+    <color name="color_E5FAFF">#E5FAFF</color>
+    <color name="color_01CAFF">#01CAFF</color>
+    <color name="color_00AFFF">#00AFFF</color>
+    <color name="color_E30613">#E30613</color>
+    <color name="color_C90000">#C90000</color>
+    <color name="color_FF923B">#FF923B</color>
+    <color name="color_F07635">#F07635</color>
+    <color name="color_75B843">#75B843</color>
+    <color name="color_4E9030">#4E9030</color>
+    <color name="color_70CD2B">#70cd2b</color>
+    <color name="color_F22100">#F22100</color>
+    <color name="color_D5F3FF">#D5F3FF</color>
+    <color name="color_04C3FD">#04C3FD</color>
+    <color name="color_CECECE">#CECECE</color>
+
+
+    <color name="color_333333">#333333</color>
+    <color name="color_555555">#555555</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_A4A4A4">#A4A4A4</color>
+    <color name="color_CCCCCC">#CCCCCC</color>
+    <color name="color_F2F2F2">#F2F2F2</color>
+    <color name="color_E6E6E6">#E6E6E6</color>
+
+
+    <color name="color_333333_90">#E6333333</color>
+    <color name="color_333333_80">#CC333333</color>
+    <color name="color_333333_20">#32333333</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_65">#89000000</color>
+    <color name="black_90">#E6000000</color>
+    <color name="color_01CAFF_10">#1901CAFF</color>
+    <color name="white_90">#E6FFFFFF</color>
+    <color name="E7E7E7_80">#B3E7E7E7</color>
+    <color name="E7E7E7_50">#80E7E7E7</color>
+
+    <color name="card_color1">#F50038</color>
+    <color name="card_color2">#F6AD00</color>
+    <color name="card_color3">#009756</color>
+    <color name="card_color4">#0088F4</color>
+    <color name="card_color5">#333333</color>
+    <color name="card_color_happy_ivory">#FFF8EF</color>
+    <color name="card_color_happy_sky">#6FC2F2</color>
+
+    <color name="shop_live_event_color1">#F8ABA8</color>
+    <color name="shop_live_event_color2">#A8E2F8</color>
+    <color name="shop_live_event_color3">#B8E77B</color>
+    <color name="shop_live_event_color4">#A8C5F8</color>
+    <color name="shop_live_event_color5">#FFDD84</color>
+    <color name="shop_live_event_color6">#B3A8F8</color>
+    <color name="shop_live_event_color7">#F8A8F8</color>
+    <color name="shop_live_event_color8">#FFD0AD</color>
+    <color name="shop_live_event_color9">#A8D5F8</color>
+    <color name="shop_live_event_color10">#C8C8C8</color>
+
+    <color name="transparent">#00000000</color>
+
+    <!-- 택시 -->
+    <color name="black_50">#80000000</color>
+    <color name="color_888888">#888888</color>
+    <color name="color_DCDCDC">#DCDCDC</color>
+    <color name="color_EBEBEB">#ebebeb</color>
+    <color name="color_DED9DF">#ded9df</color>
+    <color name="color_FFC000">#ffc000</color>
+    <color name="color_DEA90A">#dea90a</color>
+    <color name="color_EEFAFE">#eefafe</color>
+    <color name="color_D1F3FC">#d1f3fc</color>
+    <color name="color_E5E5E5">#e5e5e5</color>
+    <color name="color_F9F9F9">#f9f9f9</color>
+    <color name="color_AFB1B5">#afb1b5</color>
+    <color name="color_04BAE9">#04BAE9</color>
+    <color name="color_BFBFBF">#BFBFBF</color>
+    <color name="color_F6F6F6">#f6f6f6</color>
+    <color name="color_290000">#29000000</color>
 </resources>
+
+
+

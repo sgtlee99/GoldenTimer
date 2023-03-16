@@ -1,4 +1,4 @@
-package com.sjdev0809.goldentimer
+package com.sjdev0809.goldentimer.activity
 
 import android.content.Intent
 import android.graphics.Canvas
@@ -11,13 +11,14 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.sjdev0809.goldentimer.R
 import com.sjdev0809.goldentimer.adapter.Timer_Adapter
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.database.Timers
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     val TAG = "TAG_Main_Activity"
 

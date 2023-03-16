@@ -1,4 +1,4 @@
-package com.sjdev0809.goldentimer
+package com.sjdev0809.goldentimer.activity
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,17 +18,15 @@ import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.database.Timers
 import com.sjdev0809.goldentimer.model.MenuType
 import com.google.android.material.tabs.TabLayout
+import com.sjdev0809.goldentimer.R
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_timer.*
-import kotlinx.android.synthetic.main.numberpicker_themes.*
-import java.util.*
+
 //
 
 
-class CustomActivity : AppCompatActivity(), View.OnClickListener {
+class CustomActivity : BaseActivity(), View.OnClickListener {
 
     val TAG: String = "TAG_Custom_Activity"
     val adapter = GroupAdapter<GroupieViewHolder>()

@@ -1,4 +1,4 @@
-package com.sjdev0809.goldentimer
+package com.sjdev0809.goldentimer.activity
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
@@ -15,11 +15,12 @@ import androidx.appcompat.app.AlertDialog
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.model.Share
 import com.google.firebase.firestore.FirebaseFirestore
+import com.sjdev0809.goldentimer.R
 import kotlinx.android.synthetic.main.activity_timer.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class TimerActivity : AppCompatActivity() {
+class TimerActivity : BaseActivity() {
     //TAG
     val TAG = "TAG_Timer_Activity"
 
