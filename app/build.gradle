@@ -41,7 +41,8 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+//        viewBinding true
+        dataBinding true
     }
 }
 
@@ -90,4 +91,3 @@ dependencies {
     //androidx cardview
     implementation("androidx.cardview:cardview:1.0.0")
 }
-//tasks.register("prepareKotlinBuildScriptModel"){}

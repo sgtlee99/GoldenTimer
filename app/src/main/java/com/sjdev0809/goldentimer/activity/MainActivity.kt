@@ -9,16 +9,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.sjdev0809.goldentimer.R
 import com.sjdev0809.goldentimer.adapter.Timer_Adapter
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.database.Timers
+import com.sjdev0809.goldentimer.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     val TAG = "TAG_Main_Activity"
 
@@ -27,17 +31,22 @@ class MainActivity : BaseActivity() {
     var db: AppDatabase? = null
 
     var timersList = mutableListOf<Timers>()
+
     //swipe
     private val p: Paint = Paint()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         //test swipe
         initSwipe()
-        //내부DB에 있는 데이터들을 불러와 어댑터에 추가해야 한다
+        initalize()
+        initData()
+        initLayout()
+    }
 
+    private fun initalize() {
         //초기화
         db = AppDatabase.getInstance(this)
         //이전에 저장한 내용 모두 불러와서 추가
@@ -46,38 +55,36 @@ class MainActivity : BaseActivity() {
             timersList.addAll(savedTimers)
         }
 
+    }
 
-        //어댑터 연결, 아이템 클릭 -> 토스트
-        adapter = Timer_Adapter(timersList)
-        adapter!!.setItemClickListener(object : Timer_Adapter.OnItemClickListener {
-            override fun onClick(v: View, position: Int) {
-                val timers = timersList[position]
-                Log.d(TAG, "Clicked item ${timers}!! ${timers.id}")
-                toTimer(timers.id)
-                //타이머 화면으로 이동
-                Log.d(TAG, "Main -> Timer | Button | Clicked!")
-            }
+    private fun initData() {
 
-        })
+    }
 
-        recyclerview_timer.adapter = adapter
+    private fun initLayout() {
+        initTimerRecyclerView()
 
-        add_button.setOnClickListener {
+        binding.loAddButton.setOnClickListener {
             //추가 버튼 -> 타이머 커스텀 페이지로 넘어가야함. CustomActivity
-            Log.d(TAG, "Main -> Custom | Button | Clicked!")
-            toCustom()
+//            Log.d(TAG, "Main -> Custom | Button | Clicked!")
+//            toCustom()
+            var intent = Intent(this, CustomActivity::class.java)
+            startActivity(intent)
+
             adapter!!.notifyDataSetChanged()    //이 코드가 있어야 정상적으로 추가가 됨 (실시간)
         }
 
-        btn_stopwatch.setOnClickListener {
+        binding.btnStopwatch.setOnClickListener {
             //스톱워치로 이동
             Log.d(TAG, "Main -> Stopwatch | Button | Clicked!")
-            toStopwatch()
+            var intent = Intent(this, StopwatchActivity::class.java)
+            startActivity(intent)
         }
         btn_more.setOnClickListener {
             //더보기 -> firebase 연동
             Log.d(TAG, "Main -> Login | Button | Clicked!")
-            toMore()
+            var intent = Intent(this, ShareActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -161,6 +168,23 @@ class MainActivity : BaseActivity() {
 
     }
 
+    private fun initTimerRecyclerView() {
+        //어댑터 연결, 아이템 클릭 -> 토스트
+        adapter = Timer_Adapter(timersList)
+        adapter!!.setItemClickListener(object : Timer_Adapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                val timers = timersList[position]
+                Log.d(TAG, "Clicked item ${timers}!! ${timers.id}")
+                toTimer(timers.id)
+                //타이머 화면으로 이동
+                Log.d(TAG, "Main -> Timer | Button | Clicked!")
+            }
+
+        })
+
+        recyclerview_timer.adapter = adapter
+    }
+
 
     private fun toTimer(num: Int?) {
         var intent = Intent(this, TimerActivity::class.java)
@@ -172,21 +196,4 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun toCustom() {
-        var intent = Intent(this, CustomActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun toStopwatch() {
-        var intent = Intent(this, StopwatchActivity::class.java)
-        startActivity(intent)
-    }
-
-    //찾아보기
-    private fun toMore() {
-//        var intent = Intent(this, LoginActivity::class.java)
-//        startActivity(intent)
-        var intent = Intent(this, ShareActivity::class.java)
-        startActivity(intent)
-    }
 }

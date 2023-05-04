@@ -1,203 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/theme_color_blue"
-    android:orientation="vertical"
     tools:context=".activity.StopwatchActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/theme_color_blue"
+        android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/transparent"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bottom_cardview_style"
-                android:orientation="vertical">
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/bg_round_area_15"
+                android:backgroundTint="@color/white">
 
-
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_margin="15dp">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bottom_cardview_style"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text=" "
-                            android:textSize="40sp" />
-
-                        <TextView
-                            android:id="@+id/s_timer_count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="00"
-                            android:textSize="45sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text=" "
-                            android:textSize="40sp" />
-
-                        <com.google.android.material.divider.MaterialDivider
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"
-                            app:dividerInsetEnd="15dp"
-                            app:dividerInsetStart="15dp" />
+                        android:layout_height="300dp"
+                        android:layout_margin="15dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="bottom"
-                            android:gravity="center_horizontal"
                             android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text=" "
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:id="@+id/s_timer_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="00"
+                                android:textSize="45sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text=" "
+                                android:textSize="40sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="10dp">
+                                android:layout_gravity="bottom"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
 
-                                <androidx.appcompat.widget.AppCompatImageButton
-                                    android:id="@+id/s_play_stop_btn"
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/button_color_drawable"
-                                    android:src="@drawable/ic_baseline_play_arrow_24" />
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <androidx.appcompat.widget.AppCompatImageButton
+                                        android:id="@+id/s_play_stop_btn"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/button_color_drawable"
+                                        android:src="@drawable/ic_baseline_play_arrow_24" />
 
 
-                                <androidx.appcompat.widget.AppCompatImageButton
-                                    android:id="@+id/s_timer_record"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/button_reset_draw"
-                                    android:src="@drawable/ic_baseline_checklist_24" />
+                                    <androidx.appcompat.widget.AppCompatImageButton
+                                        android:id="@+id/s_timer_record"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/button_reset_draw"
+                                        android:src="@drawable/ic_baseline_checklist_24" />
 
-                                <androidx.appcompat.widget.AppCompatImageButton
-                                    android:id="@+id/s_timer_reset"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="5dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/button_reset_draw"
-                                    android:src="@drawable/ic_baseline_refresh_24" />
+                                    <androidx.appcompat.widget.AppCompatImageButton
+                                        android:id="@+id/s_timer_reset"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/button_reset_draw"
+                                        android:src="@drawable/ic_baseline_refresh_24" />
 
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    app:dividerInsetEnd="15dp"
-                    app:dividerInsetStart="15dp" />
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="185dp">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/record_list"
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-                </ScrollView>
+                        android:layout_height="185dp">
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    app:dividerInsetEnd="15dp"
-                    app:dividerInsetStart="15dp" />
-            </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/record_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    </ScrollView>
 
-        </com.google.android.material.card.MaterialCardView>
-    </ScrollView>
+                </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/white">
-
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_cardview_style"
-        android:backgroundTint="@color/transparent"
-        app:cardElevation="0dp">
-
+            </RelativeLayout>
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bottom_cardview_style"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white">
 
-            <Button
-                android:id="@+id/s_btn_timerlist"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_alarm_24"
-                android:text="Timer"
-                android:textColor="@color/theme_color_blue" />
-
-            <Button
-                android:id="@+id/s_btn_share"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_share_24_bottom"
-                android:text="Share"
-                android:textColor="@color/theme_color_blue" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_cardview_style"
+            android:backgroundTint="@color/transparent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bottom_cardview_style"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/s_btn_timerlist"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_baseline_alarm_24"
+                    android:text="Timer"
+                    android:textColor="@color/theme_color_blue" />
+
+                <Button
+                    android:id="@+id/s_btn_share"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_baseline_share_24_bottom"
+                    android:text="Share"
+                    android:textColor="@color/theme_color_blue" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

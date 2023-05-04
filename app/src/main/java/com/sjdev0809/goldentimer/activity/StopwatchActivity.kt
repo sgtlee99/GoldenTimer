@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.DataBindingUtil
 import com.sjdev0809.goldentimer.R
 import com.sjdev0809.goldentimer.adapter.Record_Adapter
+import com.sjdev0809.goldentimer.databinding.ActivityStopwatchBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_stopwatch.*
@@ -16,6 +18,8 @@ class StopwatchActivity : BaseActivity() {
     //TAG
     private val TAG = "TAG_Stopwatch_Activity"
 
+
+    private lateinit var binding : ActivityStopwatchBinding
     //스톱워치에 사용
     private var time = 0
     private var timerTask: Timer? = null
@@ -30,7 +34,7 @@ class StopwatchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stopwatch)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_stopwatch)
 
         //레코드
         record_list.adapter = adapter

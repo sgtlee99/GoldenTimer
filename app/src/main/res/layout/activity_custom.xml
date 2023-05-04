@@ -1,283 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/theme_color_blue"
-    android:orientation="vertical"
-    tools:context=".activity.CustomActivity">
-
-    <com.google.android.material.card.MaterialCardView
+    tools:context=".activity.CustomActivity"
+  >
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/transparent"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp">
+        android:layout_height="match_parent"
+        android:background="@color/theme_color_blue"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/transparent"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_cardview_style"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/timer_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="제목"
+                    android:textColor="@color/theme_color_blue" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:boxCornerRadiusTopEnd="15dp"
+                    app:boxCornerRadiusTopStart="15dp"
+                    app:boxStrokeColor="@color/theme_color_blue"
+                    app:hintTextColor="@color/theme_color_blue">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/alarm_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="알람 이름" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="메뉴"
+                    android:textColor="@color/theme_color_blue" />
+
+                <!--	이미지버튼으로 교체예정-->
+
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    app:tabIndicatorColor="@color/theme_color_blue"
+                    app:tabSelectedTextColor="@color/theme_color_blue">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/noodle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="면" />
+
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/fry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="튀김" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/bake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="굽기" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/boil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삶기" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <!--	메뉴선택-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="메뉴"
+                        android:textColor="@color/theme_color_blue" />
+
+
+                    <ImageView
+                        android:id="@+id/menu_preview_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_add_24dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" " />
+                </LinearLayout>
+
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="시간 설정"
+                    android:textColor="@color/theme_color_blue" />
+
+                <Button
+                    android:id="@+id/test_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_baseline_timer_24"
+                    android:text="시간설정"
+                    android:textColor="@color/theme_color_blue"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/time_set_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text="MIN"
+
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:text=" : "
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time_set_sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+
+                        android:text="SEC"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"></LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/lo_bottom"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bottom_cardview_style">
-
-            <TextView
-                android:id="@+id/timer_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/theme_color_blue"
-                android:text="제목" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                app:hintTextColor="@color/theme_color_blue"
-                app:boxCornerRadiusTopStart="15dp"
-                app:boxCornerRadiusTopEnd="15dp"
-                app:boxStrokeColor="@color/theme_color_blue">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/alarm_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="알람 이름" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/theme_color_blue"
-                android:text="메뉴" />
-
-            <!--	이미지버튼으로 교체예정-->
-
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                app:tabSelectedTextColor="@color/theme_color_blue"
-                app:tabIndicatorColor="@color/theme_color_blue"
-                >
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/noodle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="면" />
-
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/fry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="튀김" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/bake"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="굽기" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/boil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="삶기" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <!--	메뉴선택-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_menu"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_round_area_bottom"
+            android:backgroundTint="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/theme_color_blue"
-                    android:text="메뉴"
-                    />
-
-
-
-                <ImageView
-                    android:id="@+id/menu_preview_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="125dp"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:src="@drawable/default_image"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=" " />
-            </LinearLayout>
-
-
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="5dp"
-                android:textColor="@color/theme_color_blue"
-                android:text="시간 설정" />
-
-            <Button
-                android:id="@+id/test_button"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="시간설정"
-                android:textColor="@color/theme_color_blue"
-                android:textStyle="bold"
-                android:drawableTop="@drawable/ic_baseline_timer_24"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:id="@+id/time_set_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="MIN"
-                    android:textStyle="bold"
+                <RelativeLayout
+                    android:id="@+id/lo_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
 
-                    android:layout_marginBottom="10dp"
-                    android:textSize="25sp" />
+                    <ImageView
+                        android:id="@+id/iv_tostopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text=" : "
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="25sp"
-                    />
+                    <TextView
+                        android:id="@+id/tv_tostopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_tostopwatch"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="TIMER" />
 
-                <TextView
-                    android:id="@+id/time_set_sec"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SEC"
-                    android:textStyle="bold"
+                </RelativeLayout>
 
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center"
-                    android:textSize="25sp" />
+                <RelativeLayout
+                    android:id="@+id/lo_add_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_add_alarm_24" />
+
+                    <TextView
+                        android:id="@+id/tv_Add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_add"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="ADD TIMER" />
+
+                </RelativeLayout>
+
+
             </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_cardview_style"
-        android:backgroundTint="@color/transparent"
-        app:cardElevation="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_cardview_style"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/back_button"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_arrow_back_ios_new_24"
-                android:text="Back"
-                android:textColor="@color/theme_color_blue" />
-
-            <Button
-                android:id="@+id/timer_save_button"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_add_alarm_24"
-                android:text="Add"
-                android:textColor="@color/theme_color_blue" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+    </RelativeLayout>
+</layout>

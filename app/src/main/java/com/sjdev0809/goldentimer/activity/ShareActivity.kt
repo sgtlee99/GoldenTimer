@@ -7,27 +7,36 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.sjdev0809.goldentimer.adapter.Share_Adapter
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.database.Timers
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sjdev0809.goldentimer.R
+import com.sjdev0809.goldentimer.databinding.ActivityShareBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_share.*
 
 class ShareActivity : BaseActivity() {
 
+    private lateinit var binding: ActivityShareBinding
+
     //tag
     val TAG: String = "TAG_Share_Activity"
+
     //room db
     var db: AppDatabase? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_share)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_share)
 
+
+        initalize()
+        initdata()
+        initLayout()
         //DB초기화 (room)
         db = AppDatabase.getInstance(this)
 
@@ -76,27 +85,32 @@ class ShareActivity : BaseActivity() {
                 ti, me, im, mi, se
             )
             db?.timersDao()?.insert(download_timer)
-            Toast.makeText(this,"다운로드 성공!",Toast.LENGTH_SHORT).show()
-            toMain()
+            Toast.makeText(this, "다운로드 성공!", Toast.LENGTH_SHORT).show()
 
+            var intent = Intent(this, MainActivity::class.java)
+            finish()
+            startActivity(intent)
         }
 
-        sh_btn_timerlist.setOnClickListener {
-            toMain()
-        }
-        sh_btn_stopwatch.setOnClickListener {
-            toStopwatch()
-        }
+
     }
 
-    private fun toMain() {
-        var intent = Intent(this, MainActivity::class.java)
-        finish()
-        startActivity(intent)
+    private fun initalize() {
+
     }
-    private fun toStopwatch() {
-        var intent = Intent(this, StopwatchActivity::class.java)
-        finish()
-        startActivity(intent)
+    private fun initdata() {
+
+    }
+    private fun initLayout() {
+        binding.loTimer.setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+        binding.loStopwatch.setOnClickListener {
+            var intent = Intent(this, StopwatchActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
     }
 }

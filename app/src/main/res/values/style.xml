@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_01CAFF</item>
+        <item name="colorPrimaryDark">@color/color_01CAFF</item>
+        <item name="colorAccent">@color/color_00AFFF</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="actionMenuTextColor">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.CustomNoActionBar" >
+        <item name="colorPrimary">@color/color_01CAFF</item>
+        <item name="colorAccent">@color/color_00AFFF</item>
+        <item name="colorPrimaryDark">@color/color_CCCCCC</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+
+    <style name="Transparent" parent="@style/Theme.AppCompat">
+        <!--Titlebar 없애는 옵션
+            true : Titlebar x
+            false : Titlebar o
+        -->
+        <item name="windowNoTitle">true</item>
+        <!-- 투명정도를 나타내는 색-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:gravity">center_vertical</item>
+        <!--
+        android:backgroundDimEnabled
+        true - 반투명 검정 /  false - 완전 투명
+        -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- BottomSheet 배경 투명하게 처리하기 위해 -->
+
+
+    <!-- 택시 -->
+<!--    <style name="TaxiCallHistoryCategory">-->
+<!--        <item name="android:layout_width">wrap_content</item>-->
+<!--        <item name="android:singleLine">true</item>-->
+<!--        <item name="android:layout_height">wrap_content</item>-->
+<!--        <item name="android:layout_marginEnd">19dp</item>-->
+<!--        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_medium</item>-->
+<!--        <item name="android:includeFontPadding">false</item>-->
+<!--        <item name="android:letterSpacing">-0.02</item>-->
+<!--        <item name="android:textColor">@color/color_333333</item>-->
+<!--        <item name="android:textSize">16dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="TaxiCallHistoryContents">-->
+<!--        <item name="android:layout_width">wrap_content</item>-->
+<!--        <item name="android:layout_height">wrap_content</item>-->
+<!--        <item name="android:layout_weight">1</item>-->
+<!--        <item name="android:fontFamily">@font/font_noto_sans_cj_kkr_regular</item>-->
+<!--        <item name="android:includeFontPadding">false</item>-->
+<!--        <item name="android:letterSpacing">-0.02</item>-->
+<!--        <item name="android:textColor">@color/color_333333</item>-->
+<!--        <item name="android:textSize">16dp</item>-->
+<!--    </style>-->
+
+
+</resources>

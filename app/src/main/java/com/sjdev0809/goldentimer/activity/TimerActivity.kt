@@ -12,10 +12,12 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.model.Share
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sjdev0809.goldentimer.R
+import com.sjdev0809.goldentimer.databinding.ActivityTimerBinding
 import kotlinx.android.synthetic.main.activity_timer.*
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -23,6 +25,8 @@ import java.util.*
 class TimerActivity : BaseActivity() {
     //TAG
     val TAG = "TAG_Timer_Activity"
+
+    private lateinit var binding : ActivityTimerBinding
 
     //DB
     var db: AppDatabase? = null
@@ -39,7 +43,7 @@ class TimerActivity : BaseActivity() {
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_timer)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_timer)
 
         //main 에서 선택한 타이머 리스트의 id 값을 intent로 받아옴
         var received_id: Int = 0

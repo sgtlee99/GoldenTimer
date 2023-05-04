@@ -1,75 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/theme_color_blue"
-    android:orientation="vertical"
-
     tools:context=".activity.ShareActivity">
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="가져오고 싶은 타이머를 클릭하세요!"
-        android:textColor="@color/white"
-        android:textSize="25dp" />
+        android:background="@color/theme_color_blue">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_share"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_marginTop="15dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_cardview_style"
-        android:backgroundTint="@color/transparent"
-        app:cardElevation="0dp">
-
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bottom_cardview_style"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="가져오고 싶은 타이머를 클릭하세요!"
+            android:textColor="@color/white"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="25dp" />
 
-            <Button
-                android:id="@+id/sh_btn_timerlist"
-                style="?android:attr/borderlessButtonStyle"
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recyclerview_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_marginTop="15dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+        <!--    <androidx.cardview.widget.CardView-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:background="@drawable/bottom_cardview_style"-->
+        <!--        android:backgroundTint="@color/transparent"-->
+        <!--        app:cardElevation="0dp">-->
+
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:background="@drawable/bottom_cardview_style"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/sh_btn_timerlist"-->
+        <!--                style="?android:attr/borderlessButtonStyle"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="5dp"-->
+        <!--                android:layout_marginTop="15dp"-->
+        <!--                android:layout_marginRight="5dp"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:drawableTop="@drawable/ic_baseline_alarm_24"-->
+        <!--                android:text="Timer"-->
+        <!--                android:textColor="@color/theme_color_blue" />-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/sh_btn_stopwatch"-->
+        <!--                style="?android:attr/borderlessButtonStyle"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="5dp"-->
+        <!--                android:layout_marginTop="15dp"-->
+        <!--                android:layout_marginRight="5dp"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:drawableTop="@drawable/ic_baseline_timer_24"-->
+        <!--                android:text="StopWatch"-->
+        <!--                android:textColor="@color/theme_color_blue" />-->
+        <!--        </LinearLayout>-->
+        <!--    </androidx.cardview.widget.CardView>-->
+
+        <RelativeLayout
+            android:id="@+id/lo_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_round_area_bottom"
+            android:backgroundTint="@color/white">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_alarm_24"
-                android:text="Timer"
-                android:textColor="@color/theme_color_blue" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/sh_btn_stopwatch"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_timer_24"
-                android:text="StopWatch"
-                android:textColor="@color/theme_color_blue" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/lo_timer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_tostopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_alarm_24" />
+
+                    <TextView
+                        android:id="@+id/tv_tostopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_tostopwatch"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="TIMER" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/lo_stopwatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_toshare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_timer_24" />
+
+                    <TextView
+                        android:id="@+id/tv_toshare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_toshare"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="STOPWATCH" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

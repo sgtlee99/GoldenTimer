@@ -13,12 +13,14 @@ import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.sjdev0809.goldentimer.adapter.Menu_Adapter
 import com.sjdev0809.goldentimer.database.AppDatabase
 import com.sjdev0809.goldentimer.database.Timers
 import com.sjdev0809.goldentimer.model.MenuType
 import com.google.android.material.tabs.TabLayout
 import com.sjdev0809.goldentimer.R
+import com.sjdev0809.goldentimer.databinding.ActivityCustomBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_custom.*
@@ -28,7 +30,10 @@ import kotlinx.android.synthetic.main.activity_custom.*
 
 class CustomActivity : BaseActivity(), View.OnClickListener {
 
+    private lateinit var binding: ActivityCustomBinding
+
     val TAG: String = "TAG_Custom_Activity"
+
     val adapter = GroupAdapter<GroupieViewHolder>()
 
     var db: AppDatabase? = null
@@ -37,91 +42,43 @@ class CustomActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_custom)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_custom)
+
+        initalize() //이 activity에서는 필요 없을 수도?
+        initData()  //이 activity에서는 필요 없을 수도?
+        initLayout()
 
         //DB초기화
         db = AppDatabase.getInstance(this)
 
-        //제목, 메뉴, 이미지, 시간
-        //이미지는 기본 에셋제공하여 선택하는 구조
-        //버튼 하나를 선택했을때 다른버튼들의 채도가 낮아지며
-        //아래의 메뉴 리스트의 아이템들이 변경된다
-        //설정이 완료되면 내부 DB에 저장된다
+       /** 제목, 메뉴, 이미지, 시간
+        이미지는 기본 에셋제공하여 선택하는 구조
+        버튼 하나를 선택했을때 다른버튼들의 채도가 낮아지며
+        아래의 메뉴 리스트의 아이템들이 변경된다
+        설정이 완료되면 내부 DB에 저장된다 */
+    }
 
+    private fun initalize() {
 
-        //tab 최초상태
-        adapter.add(Menu_Adapter("라면"))
-        adapter.add(Menu_Adapter("소면"))
-        adapter.add(Menu_Adapter("중면"))
-        adapter.add(Menu_Adapter("우동"))
-        adapter.add(Menu_Adapter("파스타"))
+    }
+    private fun initData() {
 
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.text) {
-                    "면" -> {
-                        adapter.clear()
-                        adapter.add(Menu_Adapter("라면"))
-                        adapter.add(Menu_Adapter("소면"))
-                        adapter.add(Menu_Adapter("중면"))
-                        adapter.add(Menu_Adapter("우동"))
-                        adapter.add(Menu_Adapter("파스타"))
-                    }
-                    "튀김" -> {
-                        adapter.clear()
-                        adapter.add(Menu_Adapter("프라이"))
-                    }
-                    "굽기" -> {
-                        adapter.clear()
-                        adapter.add(Menu_Adapter("베이킹"))
-                    }
-                    "삶기" -> {
-                        adapter.clear()
-                        adapter.add(Menu_Adapter("완숙"))
-                        adapter.add(Menu_Adapter("반숙"))
-                    }
-                    else -> {
-                        adapter.clear()
-                        adapter.add(Menu_Adapter("라면"))
-                        adapter.add(Menu_Adapter("소면"))
-                        adapter.add(Menu_Adapter("중면"))
-                        adapter.add(Menu_Adapter("우동"))
-                        adapter.add(Menu_Adapter("파스타"))
-                    }
-                }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                //Not yet implemented
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                //Not yet implemented
-            }
-
-        })
-        recyclerview_menu.adapter = adapter
-
+    }
+    private fun initLayout() {
         //면을 선택했을때
         adapter.setOnItemClickListener { item, view ->
             selected = (item as Menu_Adapter).menu //선택한 미리보기 이미지
             Log.d(TAG, selected)     //선택한 메뉴가 뭔지 보여주는 LOG
 
             val menuType = MenuType.findByMenu(selected)
-
             menu_preview_img.setImageResource(menuType!!.img_resource)
+        }
 
-        }
-        test_button.setOnClickListener {
-            callNumberPickerDialog()
-            Log.d(TAG, "dialog 실행")
-        }
         //타이머 내용 DB에 저장
-        timer_save_button.setOnClickListener {
+        binding.loAddButton.setOnClickListener {
             val menuType = MenuType.findByMenu(selected)
 
             //설정내용 재확인
-//            ReConfirmDialog()
             var db_alarm_title = alarm_title.text.toString()
             var db_alarm_menu: String = menuType!!.menu_name
             var db_alarm_min = time_set_min.text.toString()
@@ -144,14 +101,22 @@ class CustomActivity : BaseActivity(), View.OnClickListener {
             //전 액티비티 지워줌
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
-
         }
+
+        //리사이클러 뷰
+        initTabRecyclerView()
+
+        //시간 선택 다이얼로그 실행 TODO: 다이얼로그 변경 예쩡
+        test_button.setOnClickListener {
+            callNumberPickerDialog()
+            Log.d(TAG, "dialog 실행")
+        }
+
         //뒤로버튼
-        back_button.setOnClickListener {
+        binding.loBack.setOnClickListener {
             finish()
         }
     }
-
     //분, 초를 선택하는 numberPicker
     fun callNumberPickerDialog() {
         val dialog = AlertDialog.Builder(this).create()
@@ -205,6 +170,60 @@ class CustomActivity : BaseActivity(), View.OnClickListener {
     }
 
 
+    private fun initTabRecyclerView() {
+        //tab 최초상태
+        adapter.add(Menu_Adapter("라면"))
+        adapter.add(Menu_Adapter("소면"))
+        adapter.add(Menu_Adapter("중면"))
+        adapter.add(Menu_Adapter("우동"))
+        adapter.add(Menu_Adapter("파스타"))
+
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.text) {
+                    "면" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("라면"))
+                        adapter.add(Menu_Adapter("소면"))
+                        adapter.add(Menu_Adapter("중면"))
+                        adapter.add(Menu_Adapter("우동"))
+                        adapter.add(Menu_Adapter("파스타"))
+                    }
+                    "튀김" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("프라이"))
+                    }
+                    "굽기" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("베이킹"))
+                    }
+                    "삶기" -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("완숙"))
+                        adapter.add(Menu_Adapter("반숙"))
+                    }
+                    else -> {
+                        adapter.clear()
+                        adapter.add(Menu_Adapter("라면"))
+                        adapter.add(Menu_Adapter("소면"))
+                        adapter.add(Menu_Adapter("중면"))
+                        adapter.add(Menu_Adapter("우동"))
+                        adapter.add(Menu_Adapter("파스타"))
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                //Not yet implemented
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                //Not yet implemented
+            }
+
+        })
+        recyclerview_menu.adapter = adapter
+    }
     //왜 오버라이드 구현해야겠는지는 모르겠음
     override fun onClick(p0: View?) {
         TODO("Not yet implemented")
