@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/theme_color_blue"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
 
         <RelativeLayout
@@ -50,12 +49,12 @@
                     android:text="메뉴"
                     android:textSize="15sp" />
 
-<!--                <com.google.android.material.divider.MaterialDivider-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="15dp"-->
-<!--                    android:layout_marginRight="15dp"-->
-<!--                    android:layout_marginBottom="10dp" />-->
+                <!--                <com.google.android.material.divider.MaterialDivider-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="15dp"-->
+                <!--                    android:layout_marginRight="15dp"-->
+                <!--                    android:layout_marginBottom="10dp" />-->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -112,11 +111,11 @@
                 </RelativeLayout>
 
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp" />
+                <!--                <com.google.android.material.divider.MaterialDivider-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="15dp"-->
+                <!--                    android:layout_marginRight="15dp" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -162,29 +161,6 @@
                         android:background="@drawable/button_state_blue"
                         android:src="@drawable/ic_baseline_share_24" />
 
-                    <!--        <Button-->
-                    <!--            android:id="@+id/timer_pause"-->
-                    <!--            android:layout_width="wrap_content"-->
-                    <!--            android:layout_height="wrap_content"-->
-                    <!--            android:layout_margin="15dp"-->
-                    <!--            android:layout_weight="1"-->
-                    <!--            android:text="정지" />-->
-
-                    <!--        <Button-->
-                    <!--            android:id="@+id/timer_start"-->
-                    <!--            android:layout_width="wrap_content"-->
-                    <!--            android:layout_height="wrap_content"-->
-                    <!--            android:layout_margin="15dp"-->
-                    <!--            android:layout_weight="1"-->
-                    <!--            android:text="시작" />-->
-
-                    <!--        <Button-->
-                    <!--            android:id="@+id/timer_reset"-->
-                    <!--            android:layout_width="wrap_content"-->
-                    <!--            android:layout_height="wrap_content"-->
-                    <!--            android:layout_margin="15dp"-->
-                    <!--            android:layout_weight="1"-->
-                    <!--            android:text="리셋" />-->
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -196,44 +172,68 @@
             android:layout_weight="1"></LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/lo_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bottom_cardview_style"
-            android:backgroundTint="@color/transparent"
-            app:cardElevation="0dp">
-
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_round_area_bottom"
+            android:backgroundTint="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bottom_cardview_style"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/t_btn_timerlist"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/ic_baseline_alarm_24"
-                    android:text="Timer"
-                    android:textColor="@color/theme_color_blue" />
 
-                <Button
-                    android:id="@+id/t_btn_stopwatch"
-                    style="?android:attr/borderlessButtonStyle"
+                <RelativeLayout
+                    android:id="@+id/lo_back"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/ic_baseline_timer_24"
-                    android:text="StopWatch"
-                    android:textColor="@color/theme_color_blue" />
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_tostopwatch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
+                    <TextView
+                        android:id="@+id/tv_tostopwatch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_tostopwatch1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="TIMER" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_stopwatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_tostopwatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_add_alarm_24" />
+
+                    <TextView
+                        android:id="@+id/tv_tostopwatch12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_tostopwatch"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="ADD TIMER" />
+                </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

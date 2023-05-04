@@ -51,6 +51,7 @@ class StopwatchActivity : BaseActivity() {
             rec = s_timer_count.text.toString()
             adapter.add(Record_Adapter(++generated_num, rec))
         }
+
         //play | stop switch button
         s_play_stop_btn.setOnClickListener {
             if (button_state==true) {
@@ -68,13 +69,12 @@ class StopwatchActivity : BaseActivity() {
             }
         }
 
-        //하단버튼
-        s_btn_timerlist.setOnClickListener {
+        binding.btnTimer.setOnClickListener {
             //메인으로 이동
             Log.d(TAG, "Stopwatch -> Main | Button | Clicked!")
             toMain()
         }
-        s_btn_share.setOnClickListener {
+        binding.btnShare.setOnClickListener {
             //더보기 -> firebase 연동
             toMore()
         }

@@ -45,6 +45,11 @@ class TimerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_timer)
 
+
+        initialize()
+        initData()
+        initLayout()
+
         //main 에서 선택한 타이머 리스트의 id 값을 intent로 받아옴
         var received_id: Int = 0
         if (intent.hasExtra("timer-id")) {
@@ -56,31 +61,12 @@ class TimerActivity : BaseActivity() {
         db = AppDatabase.getInstance(this)
         //받아온 id를 사용하여 db에서 해당 행을 반환
         var set_timer = db!!.timersDao().getById(num = received_id)
+
         Log.d(
             TAG,
             "${set_timer.t_title} ${set_timer.t_menu} ${set_timer.t_img} ${set_timer.t_min} ${set_timer.t_sec}"
         )
 
-        //이름추가, 공유 버튼
-        name_adding.setOnClickListener {
-            Log.d(TAG, "Share Button Click!")
-
-            shareDialog(
-                set_timer.t_title,
-                set_timer.t_menu,
-                set_timer.t_img,
-                set_timer.t_min,
-                set_timer.t_sec
-            )
-        }
-
-
-        //타이머 시작, 정지, 리셋 버튼
-        timer_reset.setOnClickListener {
-            //최초 상태로 textview 변경
-            timer_count_min.text = "%02d".format(set_timer.t_min.toInt())
-            timer_count_sec.text = "%02d".format(set_timer.t_sec.toInt())
-        }
 
 
 
@@ -118,9 +104,42 @@ class TimerActivity : BaseActivity() {
             }
         }
 
+        //이름추가, 공유 버튼
+        binding.nameAdding.setOnClickListener {
+            Log.d(TAG, "Share Button Click!")
+
+            shareDialog(
+                set_timer.t_title,
+                set_timer.t_menu,
+                set_timer.t_img,
+                set_timer.t_min,
+                set_timer.t_sec
+            )
+        }
+
+
+        //타이머 시작, 정지, 리셋 버튼
+        timer_reset.setOnClickListener {
+            //최초 상태로 textview 변경
+            timer_count_min.text = "%02d".format(set_timer.t_min.toInt())
+            timer_count_sec.text = "%02d".format(set_timer.t_sec.toInt())
+        }
+
+
         //화면 이동 버튼
-        t_btn_stopwatch.setOnClickListener { toStopwatch() }
-        t_btn_timerlist.setOnClickListener { toMain() }
+        binding.btnStopwatch.setOnClickListener { toStopwatch() }
+        binding.loBack.setOnClickListener { toMain() }
+    }
+
+    private fun initialize() {
+
+    }
+    private fun initData() {
+
+    }
+
+    private fun initLayout() {
+
     }
 
     private fun convertTime(min: String, sec: String): Long {
@@ -215,6 +234,7 @@ class TimerActivity : BaseActivity() {
                 sh_sec = sec,
                 sh_name = sh_name
             )
+
             //firestore
             fb_db.collection("shares")
                 .add(share)

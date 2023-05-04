@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.StopwatchActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/theme_color_blue"
-        android:orientation="vertical">
+        android:background="@color/theme_color_blue">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -139,45 +138,114 @@
 
         </LinearLayout>
 
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/bottom_cardview_style"-->
+        <!--            android:backgroundTint="@color/transparent">-->
+
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/bottom_cardview_style"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/s_btn_timerlist"-->
+        <!--                    style="?android:attr/borderlessButtonStyle"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="5dp"-->
+        <!--                    android:layout_marginTop="15dp"-->
+        <!--                    android:layout_marginRight="5dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:drawableTop="@drawable/ic_baseline_alarm_24"-->
+        <!--                    android:text="Timer"-->
+        <!--                    android:textColor="@color/theme_color_blue" />-->
+
+        <!--                <Button-->
+        <!--                    android:id="@+id/s_btn_share"-->
+        <!--                    style="?android:attr/borderlessButtonStyle"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="5dp"-->
+        <!--                    android:layout_marginTop="15dp"-->
+        <!--                    android:layout_marginRight="5dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:drawableTop="@drawable/ic_baseline_share_24_bottom"-->
+        <!--                    android:text="Share"-->
+        <!--                    android:textColor="@color/theme_color_blue" />-->
+        <!--            </LinearLayout>-->
+        <!--        </RelativeLayout>-->
         <RelativeLayout
+            android:id="@+id/lo_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bottom_cardview_style"
-            android:backgroundTint="@color/transparent">
-
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_round_area_bottom"
+            android:backgroundTint="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bottom_cardview_style"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/s_btn_timerlist"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/ic_baseline_alarm_24"
-                    android:text="Timer"
-                    android:textColor="@color/theme_color_blue" />
 
-                <Button
-                    android:id="@+id/s_btn_share"
-                    style="?android:attr/borderlessButtonStyle"
+                <RelativeLayout
+                    android:id="@+id/btn_timer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/ic_baseline_share_24_bottom"
-                    android:text="Share"
-                    android:textColor="@color/theme_color_blue" />
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_totimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_timer_24" />
+
+                    <TextView
+                        android:id="@+id/tv_totimer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_totimer"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="STOPWATCH" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_toshare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/ic_baseline_share_24_bottom" />
+
+                    <TextView
+                        android:id="@+id/tv_toshare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_toshare"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="STOPWATCH" />
+
+                </RelativeLayout>
+
+
             </LinearLayout>
         </RelativeLayout>
-    </LinearLayout>
+
+    </RelativeLayout>
 </layout>

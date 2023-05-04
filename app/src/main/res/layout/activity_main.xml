@@ -32,13 +32,12 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_round_area_25"
             android:backgroundTint="@color/white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:backgroundTint="@color/white"
                 android:src="@drawable/ic_baseline_add_alarm_24_big"
                 android:text="" />
